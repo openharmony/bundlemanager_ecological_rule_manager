@@ -33,7 +33,7 @@ namespace OHOS {
 namespace EcologicalRuleMgrService {
 using namespace OHOS::AppExecFwk;
 
-class EcologicalRuleMgrServiceStub : public IRemoteStub<IEcologicalRuleMgrService> {
+class EcologicalRuleMgrServiceStub : public IRemoteStub<EcologicalRuleMgrServiceInterface> {
 public:
     using Want = OHOS::AAFwk::Want;
     using AbilityInfo = OHOS::AppExecFwk::AbilityInfo;

@@ -21,10 +21,10 @@ namespace OHOS {
 namespace EcologicalRuleMgrService {
 #define TAG "erms_proxy"
 static inline const std::u16string ERMS_INTERFACE_TOKEN =
-    u"ohos.cloud.ecologicalrulemgrservice.IEcologicalRuleMgrService";
+    u"ohos.cloud.ecologicalrulemgrservice.EcologicalRuleMgrServiceInterface";
 
 EcologicalRuleMgrServiceProxy::EcologicalRuleMgrServiceProxy(const sptr<IRemoteObject> &object)
-    : IRemoteProxy<IEcologicalRuleMgrService>(object)
+    : IRemoteProxy<EcologicalRuleMgrServiceInterface>(object)
 {}
 
 int32_t EcologicalRuleMgrServiceProxy::QueryFreeInstallExperience(const Want &want, const CallerInfo &callerInfo,

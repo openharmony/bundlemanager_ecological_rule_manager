@@ -52,7 +52,7 @@ napi_value NAPI_SetAppEnhancedData(napi_env env, napi_callback_info info)
 
     EcologicalRuleMgrServiceClient::GetInstance()->SetAppEnhancedData(operType, appData);
     LOG_INFO("NAPI_SetAppEnhancedData end");
-    return (napi_value)IEcologicalRuleMgrService::ERR_OK;
+    return (napi_value)EcologicalRuleMgrServiceInterface::ERR_OK;
 }
 
 napi_value NAPI_SetRuleInfo(napi_env env, napi_callback_info info)
@@ -75,7 +75,7 @@ napi_value NAPI_SetRuleInfo(napi_env env, napi_callback_info info)
 
     EcologicalRuleMgrServiceClient::GetInstance()->SetRuleInfo(ruleInfo);
     LOG_INFO("NAPI_SetRuleInfo end");
-    return (napi_value)IEcologicalRuleMgrService::ERR_OK;
+    return (napi_value)EcologicalRuleMgrServiceInterface::ERR_OK;
 }
 
 napi_value NAPI_SetSceneExperience(napi_env env, napi_callback_info info)
@@ -108,7 +108,7 @@ napi_value NAPI_SetSceneExperience(napi_env env, napi_callback_info info)
 
     EcologicalRuleMgrServiceClient::GetInstance()->SetSceneExperience(ruleConfig, sceneExperience);
     LOG_INFO("NAPI_SetSceneExperience end");
-    return (napi_value)IEcologicalRuleMgrService::ERR_OK;
+    return (napi_value)EcologicalRuleMgrServiceInterface::ERR_OK;
 }
 
 napi_value NAPI_ExemptExperience(napi_env env, napi_callback_info info)
@@ -139,7 +139,7 @@ napi_value NAPI_ExemptExperience(napi_env env, napi_callback_info info)
 
     EcologicalRuleMgrServiceClient::GetInstance()->ExemptExperience(targetBundleName, rule, timeStamp);
     LOG_INFO("NAPI_ExemptExperience end");
-    return (napi_value)IEcologicalRuleMgrService::ERR_OK;
+    return (napi_value)EcologicalRuleMgrServiceInterface::ERR_OK;
 }
 
 napi_value NAPI_GetVersion(napi_env env, napi_callback_info info)

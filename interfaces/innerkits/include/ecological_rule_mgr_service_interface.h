@@ -24,9 +24,9 @@
 
 namespace OHOS {
 namespace EcologicalRuleMgrService {
-class IEcologicalRuleMgrService : public OHOS::IRemoteBroker {
+class EcologicalRuleMgrServiceInterface : public OHOS::IRemoteBroker {
 public:
-    DECLARE_INTERFACE_DESCRIPTOR(u"ohos.cloud.ecologicalrulemgrservice.IEcologicalRuleMgrService");
+    DECLARE_INTERFACE_DESCRIPTOR(u"ohos.cloud.ecologicalrulemgrservice.EcologicalRuleMgrServiceInterface");
 
     using Want = OHOS::AAFwk::Want;
 

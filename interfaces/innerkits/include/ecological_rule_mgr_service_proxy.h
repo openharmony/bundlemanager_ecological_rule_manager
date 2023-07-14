@@ -22,7 +22,7 @@
 
 namespace OHOS {
 namespace EcologicalRuleMgrService {
-class EcologicalRuleMgrServiceProxy : public OHOS::IRemoteProxy<IEcologicalRuleMgrService> {
+class EcologicalRuleMgrServiceProxy : public OHOS::IRemoteProxy<EcologicalRuleMgrServiceInterface> {
 public:
     using Want = OHOS::AAFwk::Want;
     using AbilityInfo = OHOS::AppExecFwk::AbilityInfo;

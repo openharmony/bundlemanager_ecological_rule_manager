@@ -42,14 +42,11 @@ struct CallerInfo : public Parcelable {
         TYPE_HARMONY_APP,
         TYPE_ATOM_SERVICE
     };
-
     std::string packageName;
     int32_t uid = 0L;
     int32_t pid = 0L;
-
     int32_t callerAppType = TYPE_INVALID;
     int32_t targetAppType = TYPE_INVALID;
-
     bool ReadFromParcel(Parcel &parcel);
     bool Marshalling(Parcel &parcel) const override;
     static CallerInfo *Unmarshalling(Parcel &parcel);
