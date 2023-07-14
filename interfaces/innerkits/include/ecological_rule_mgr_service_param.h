@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2023-2023. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -40,10 +40,7 @@ struct CallerInfo : public Parcelable {
     enum {
         TYPE_INVALID = 0,
         TYPE_HARMONY_APP,
-        TYPE_ATOM_SERVICE,
-        TYPE_ANDROID_APK,
-        TYPE_QUICK_APP,
-        TYPE_BOXED_ATOM_SERVICE
+        TYPE_ATOM_SERVICE
     };
 
     std::string packageName;
@@ -54,11 +51,8 @@ struct CallerInfo : public Parcelable {
     int32_t targetAppType = TYPE_INVALID;
 
     bool ReadFromParcel(Parcel &parcel);
-
     bool Marshalling(Parcel &parcel) const override;
-
     static CallerInfo *Unmarshalling(Parcel &parcel);
-
     std::string ToString() const;
 };
 

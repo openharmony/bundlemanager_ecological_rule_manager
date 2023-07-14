@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2023-2023. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -23,18 +23,6 @@
 
 namespace OHOS {
 namespace EcologicalRuleMgrServiceNapi {
-#define RETURN_VOID_IF_NULL(ptr)                                     \
-    if ((ptr) == nullptr) {                                          \
-        LOG_INFO("[%{public}s] is NULL", std::string(#ptr).c_str()); \
-        return;                                                      \
-    }
-
-#define RETURN_NULL_IF_NULL(ptr)                                     \
-    if ((ptr) == nullptr) {                                          \
-        LOG_INFO("[%{public}s] is NULL", std::string(#ptr).c_str()); \
-        return nullptr;                                              \
-    }
-
 namespace {
 const int32_t NO_ERROR = 0;
 const int32_t ERROR = -1;

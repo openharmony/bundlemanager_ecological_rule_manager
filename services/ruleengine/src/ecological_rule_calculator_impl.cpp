@@ -1,11 +1,10 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2023-2023. All rights reserved.
-
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -14,7 +13,6 @@
  * limitations under the License.
  */
 #include "ecological_rule_calculator_impl.h"
-#include <sys/time.h>
 #include "ecological_rule_engine_cache.h"
 #include "var_exp.h"
 #include "or_exp.h"
@@ -29,7 +27,7 @@ namespace EcologicalRuleMgrService {
 EcologicalRuleCalculatorImpl *EcologicalRuleCalculatorImpl::ecologicalRuleCalculatorImpl =
     new (std::nothrow) EcologicalRuleCalculatorImpl();
 
-const std::map<std::string, OperatorInfo> EcologicalRuleCalculatorImpl::OPERATOR_STR_INFO_MAP{
+const std::map<std::string, OperatorInfo> EcologicalRuleCalculatorImpl::OPERATOR_STR_INFO_MAP {
     { OPERATION_OR, { OR_ID, BINARY_OPERATOR } },
     { OPERATION_EQUAL, { EQUAL_ID, BINARY_OPERATOR } },
     { OPERATION_BUNDLENAME, { BUNDLENAME_ID, UNARY_OPERATOR } },
@@ -37,7 +35,7 @@ const std::map<std::string, OperatorInfo> EcologicalRuleCalculatorImpl::OPERATOR
     { OPERATION_IS_JUMP_TYPE, { IS_JUMP_TYPE_ID, TERNARY_OPERATOR } },
 };
 
-const std::map<std::string, std::string> EcologicalRuleCalculatorImpl::EXPERIENCE_TYPE_MAP{
+const std::map<std::string, std::string> EcologicalRuleCalculatorImpl::EXPERIENCE_TYPE_MAP {
     { EXPERIENCE_TYPE_LOAD, "1" },
     { EXPERIENCE_TYPE_OPEN, "2" },
     { EXPERIENCE_TYPE_OUT, "5" },
@@ -252,7 +250,6 @@ int32_t EcologicalRuleCalculatorImpl::QueryMatchSceneExperience(const OHOS::AAFw
 {
     experienceRule.isAllow = true;
     int32_t queryRet = NO_MATCH_RULE;
-    uint64_t queryStartTime = GetMillisecondsOfDay();
     try {
         LOG_INFO("QueryMatchSceneExperience called");
         // preset instruction execution result cache
@@ -282,9 +279,7 @@ int32_t EcologicalRuleCalculatorImpl::QueryMatchSceneExperience(const OHOS::AAFw
         experienceRule.sceneCode = "00000";
         LOG_INFO("[QueryMatchSceneExperience] end: not match any rule.");
     }
-    uint64_t queryEndTime = GetMillisecondsOfDay();
-    LOG_INFO("QueryMatchSceneExperience finish! result is %{public}d start = %{public}lu end = %{public}lu",
-        experienceRule.isAllow, queryStartTime, queryEndTime);
+    LOG_INFO("QueryMatchSceneExperience finish! result is %{public}d", experienceRule.isAllow);
     return SUCCESS_RULE;
 }
 
@@ -529,15 +524,6 @@ bool EcologicalRuleCalculatorImpl::CalculateDslMatchResult(const OHOS::AAFwk::Wa
     } else {
         return calculatorResult.logicRet;
     }
-}
-
-uint64_t EcologicalRuleCalculatorImpl::GetMillisecondsOfDay()
-{
-    struct timeval tv = { 0, 0 };
-    gettimeofday(&tv, nullptr);
-    uint64_t secs = static_cast<uint64_t>(tv.tv_sec);
-    uint64_t msec = static_cast<uint64_t>(tv.tv_usec / 1000); // 1000 means unit
-    return secs * 1000 + msec;                                // 1000 means unit
 }
 } // namespace EcologicalRuleMgrService
 } // namespace OHOS
