@@ -283,34 +283,6 @@ int32_t EcologicalRuleMgrService::GetAdsVerificationVersion(int32_t &version)
     return 0;
 }
 
-void *EcologicalRuleMgrService::StartLoadRuleEngineData(void *args)
-{
-    LOG_INFO("start load data file");
-    // load rule strategy file
-    EcologicalRuleEngineCache::GetInstance().GetRuleControlStrategyDataLock();
-    EcologicalRuleEngineCache::GetInstance().LoadRuleStrategyFile();
-    EcologicalRuleCalculatorImpl::GetInstance()->ConstructRuleStrategyObjects();
-    EcologicalRuleEngineCache::GetInstance().ClearRuleControlStrategyCache();
-    EcologicalRuleEngineCache::GetInstance().ReleaseRuleControlStrategyDataLock();
-    
-    // load app enhance file, locked inner
-    EcologicalRuleEngineCache::GetInstance().LoadAppEnhanceFile();
-    // load scene config file, locked inner
-    EcologicalRuleEngineCache::GetInstance().LoadSceneConfigFile();
-    return nullptr;
-}
-
-void EcologicalRuleMgrService::LoadRuleConfigData()
-{
-    pthread_attr_t attr;
-    pthread_attr_init(&attr);
-    pthread_attr_setdetachstate(&attr, PTHREAD_CREATE_DETACHED);
-    int32_t ret = pthread_create(&loadThreadId, &attr, StartLoadRuleEngineData, NULL);
-    if (ret != 0) {
-        LOG_ERROR("create load rule thread fail");
-    }
-}
-
 void EcologicalRuleMgrService::OnStart()
 {
     LOG_INFO("EcologicalRuleMgrService OnStart");
@@ -318,8 +290,6 @@ void EcologicalRuleMgrService::OnStart()
         LOG_WARN("EcologicalRuleMgrService is already running");
         return;
     }
-
-    LoadRuleConfigData();
 
     bool ret = Publish(EcologicalRuleMgrService::GetInstance());
     if (!ret) {
