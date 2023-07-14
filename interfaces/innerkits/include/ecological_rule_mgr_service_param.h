@@ -18,7 +18,6 @@
 
 #include <string>
 #include <vector>
-
 #include "parcel.h"
 #include "want.h"
 
@@ -30,9 +29,7 @@ struct ExperienceRule : public Parcelable {
     bool isAllow = true;
     std::string sceneCode = "";
     sptr<Want> replaceWant = nullptr;
-
     bool Marshalling(Parcel &parcel) const override;
-
     static ExperienceRule *Unmarshalling(Parcel &parcel);
 };
 
@@ -52,7 +49,6 @@ struct CallerInfo : public Parcelable {
     static CallerInfo *Unmarshalling(Parcel &parcel);
     std::string ToString() const;
 };
-
 } // namespace EcologicalRuleMgrService
 } // namespace OHOS
 #endif // ECOLOGICALRULEMANAGERSERVICE_PARAM_H

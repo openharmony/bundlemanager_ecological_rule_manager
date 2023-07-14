@@ -75,8 +75,6 @@ protected:
 
 private:
     void setDefaultRule(ExperienceRule &rule);
-    void LoadRuleConfigData();
-    static void *StartLoadRuleEngineData(void *args);
     static mutex instanceLock_;
     static mutex conditionMutex_;
     static sptr<EcologicalRuleMgrService> instance_;
