@@ -29,7 +29,7 @@ using namespace std::chrono;
 
 std::mutex EcologicalRuleMgrServiceClient::instanceLock_;
 sptr<EcologicalRuleMgrServiceClient> EcologicalRuleMgrServiceClient::instance_;
-sptr<IEcologicalRuleMgrService> EcologicalRuleMgrServiceClient::ecologicalRuleMgrServiceProxy_;
+sptr<EcologicalRuleMgrServiceInterface> EcologicalRuleMgrServiceClient::ecologicalRuleMgrServiceProxy_;
 sptr<EcologicalRuleMgrServiceDeathRecipient> EcologicalRuleMgrServiceClient::deathRecipient_;
 
 std::string EcologicalRuleMgrServiceClient::ERMS_ORIGINAL_TARGET = "ecological_experience_original_target";
@@ -62,7 +62,7 @@ sptr<EcologicalRuleMgrServiceClient> EcologicalRuleMgrServiceClient::GetInstance
     return instance_;
 }
 
-sptr<IEcologicalRuleMgrService> EcologicalRuleMgrServiceClient::ConnectService()
+sptr<EcologicalRuleMgrServiceInterface> EcologicalRuleMgrServiceClient::ConnectService()
 {
     sptr<ISystemAbilityManager> samgr = SystemAbilityManagerClient::GetInstance().GetSystemAbilityManager();
     if (samgr == nullptr) {
@@ -79,7 +79,7 @@ sptr<IEcologicalRuleMgrService> EcologicalRuleMgrServiceClient::ConnectService()
     deathRecipient_ = new EcologicalRuleMgrServiceDeathRecipient();
     systemAbility->AddDeathRecipient(deathRecipient_);
 
-    return iface_cast<IEcologicalRuleMgrService>(systemAbility);
+    return iface_cast<EcologicalRuleMgrServiceInterface>(systemAbility);
 }
 
 bool EcologicalRuleMgrServiceClient::CheckConnectService()

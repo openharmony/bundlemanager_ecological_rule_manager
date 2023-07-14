@@ -63,12 +63,12 @@ public:
 private:
     EcologicalRuleMgrServiceClient();
     ~EcologicalRuleMgrServiceClient();
-    static sptr<IEcologicalRuleMgrService> ConnectService();
+    static sptr<EcologicalRuleMgrServiceInterface> ConnectService();
     static bool CheckConnectService();
 
     static mutex instanceLock_;
     static sptr<EcologicalRuleMgrServiceClient> instance_;
-    static sptr<IEcologicalRuleMgrService> ecologicalRuleMgrServiceProxy_;
+    static sptr<EcologicalRuleMgrServiceInterface> ecologicalRuleMgrServiceProxy_;
     static sptr<EcologicalRuleMgrServiceDeathRecipient> deathRecipient_;
 
     static string ERMS_ORIGINAL_TARGET;
