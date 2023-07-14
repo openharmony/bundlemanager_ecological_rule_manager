@@ -1,5 +1,5 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2023-2023. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
@@ -17,33 +17,33 @@
 
 namespace OHOS {
 namespace EcologicalRuleMgrServiceNapi {
-std::mutex NapiContextContainer::instanceLock_;
-NapiContextContainer *NapiContextContainer::instance_;
+std::mutex EcologicalRuleMgrServiceContextContainer::instanceLock_;
+EcologicalRuleMgrServiceContextContainer *EcologicalRuleMgrServiceContextContainer::instance_;
 
-NapiContextContainer::~NapiContextContainer()
+EcologicalRuleMgrServiceContextContainer::~EcologicalRuleMgrServiceContextContainer()
 {
     contextContainer_.clear();
 }
 
-NapiContextContainer *NapiContextContainer::GetInstance()
+EcologicalRuleMgrServiceContextContainer *EcologicalRuleMgrServiceContextContainer::GetInstance()
 {
     if (instance_ == nullptr) {
         std::lock_guard<std::mutex> autoLock(instanceLock_);
         if (instance_ == nullptr) {
-            instance_ = new NapiContextContainer();
+            instance_ = new EcologicalRuleMgrServiceContextContainer();
         }
     }
     return instance_;
 }
 
-void NapiContextContainer::registerContext(uint32_t code, void *context)
+void EcologicalRuleMgrServiceContextContainer::registerContext(uint32_t code, void *context)
 {
     if (contextContainer_.find(code) == contextContainer_.end()) {
         contextContainer_[code] = context;
     }
 }
 
-void *NapiContextContainer::queryContext(uint32_t code)
+void *EcologicalRuleMgrServiceContextContainer::queryContext(uint32_t code)
 {
     if (contextContainer_.find(code) != contextContainer_.end()) {
         return contextContainer_[code];

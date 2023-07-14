@@ -1,10 +1,10 @@
 /*
- * Copyright (c) Huawei Technologies Co., Ltd. 2023-2023. All rights reserved.
+ * Copyright (c) 2023 Huawei Device Co., Ltd.
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
  *
- * http://www.apache.org/licenses/LICENSE-2.0
+ *     http://www.apache.org/licenses/LICENSE-2.0
  *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
@@ -17,24 +17,20 @@
 #define SERVICES_INCLUDE_ECOLOGICAL_RULE_CALCULATOR_IMPL_H
 
 #include "ecological_rule_calculator.h"
-
 namespace OHOS {
 namespace EcologicalRuleMgrService {
-
 // operator name
 const std::string OPERATION_OR = "OR";
 const std::string OPERATION_EQUAL = "EQUAL";
 const std::string OPERATION_BUNDLENAME = "BUNDLENAME";
 const std::string OPERATION_AND = "AND";
 const std::string OPERATION_IS_JUMP_TYPE = "IS_JUMP_TYPE";
-
 // operator id
 const int32_t OR_ID = 1;
 const int32_t EQUAL_ID = 2;
 const int32_t BUNDLENAME_ID = 3;
 const int32_t AND_ID = 4;
 const int32_t IS_JUMP_TYPE_ID = 5;
-
 // key word
 const std::string KEYWORD_RULES = "RULELIST";
 const std::string KEYWORD_LIST = "list";
@@ -93,7 +89,6 @@ private:
     int32_t GetSceneExperienceFromCache(const OHOS::AAFwk::Want &want, const CallerInfo &callerInfo,
         const std::string transExperienceType, std::map<std::string, CalculatorResult> &presetCache,
         ExperienceRule &experienceRule);
-    uint64_t GetMillisecondsOfDay();
     std::string GetSceneCodeBundleName(const OHOS::AAFwk::Want &want, const std::string sceneCode);
 };
 }
