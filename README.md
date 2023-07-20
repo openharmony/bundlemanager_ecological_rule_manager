@@ -1,39 +1,58 @@
 # bundlemanager_ecological_rule_manager
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+### 简介
+为了确保元服务的生态是可控、有序、高效的，需要对元服务的行为、结果进行管控，确保生态的有序发展，保证用户体验的同时也保障开发者的权益， 为此构建了元服
+务的生态规则管控服务(EcologicalRuleManagerService), 生态规则管控服务是OpenHarmony包管理子系统下新增的部件，该服务是SystemAbility， 即系
+统元能力，简称SA, 是一种系统服务。
 
-#### 软件架构
-软件架构说明
+### 软件架构
+![image](figures/architecture.jpg)
 
+### 目录结构
 
-#### 安装教程
+```shell
+/foundation/bundlemanager/ecological_rule_mgr       # 生态规则管控服务业务代码
+├── etc                                             
+│   └── init                                        # SA启动配置文件
+├── interfaces                                      # 接口代码
+│   ├── innerkits                                   # 内部接口
+│   └── kits                                        # 外部接口
+├── profile                                         # 服务配置文件
+├── services                                        # 服务代码
+├── LICENSE                                         # 证书文件
+├── tests                                           # 开发者测试
+└── utils                                           # 工具类
+```
+### 编译构建
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+在OpenHarmony源码根目录下，调用以下指令，单独编译ecological_rule_mgr。
+```shell
+./build.sh --product-name rk3568 --ccache --build-target ecological_rule_mgr
+```
+> **说明：**
+--product-name：产品名称，例如Hi3516DV300、rk3568等。
+--ccache：编译时使用缓存功能。
+--build-target: 编译的部件名称。
 
-#### 使用说明
+### 接口说明
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+|接口名称|接口描述|
+|---|---|
+|SetAppEnhancedData(const int32_t &operType, const std::string &appData): int32_t|刷新应用的增强数据。|
+|SetRuleInfo(const std::string &ruleInfo): int32_t|刷新生态规则策略。|
+|ExemptExperience(const std::string &targetBundleName, const int32_t &rule, const int32_t &timestamp): int32_t|短时间内豁免目标应用。|
+|GetVersion(std::string &versionJson): int32_t|查询引擎版本号信息。|
+|SetSceneExperience(std::string &ruleConfig, std::string &sceneExperience): int32_t|设置场景值的体验配置。|
+|GetSceneCode(const std::string &bundleName, std::string &sceneCode): int32_t|获取指定应用的场景值。|
+|GetInitialSceneCode(const std::string &bundleName, std::string &originalSceneCode): int32_t|获取指定应用的场景值。|
+|GetSelfSceneCode(std::string &sceneCode): int32_t|获取自身应用的场景值。|
+|GetAdsVerificationVersion(int32_t &version): int32_t|获取广告验签的版本。|
 
-#### 参与贡献
+### 贡献代码
 
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+使用过程中发现任何问题都可以提 [Issue](https://gitee.com/openharmony-sig/bundlemanager_ecological_rule_manager/issues)
+给我们，当然，我们也非常欢迎你给我们发 [PR](https://gitee.com/openharmony-sig/bundlemanager_ecological_rule_manager/pulls) 。
 
+### 开源协议
 
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+本项目基于 [Apache License 2.0 ](https://gitee.com/openharmony-sig/bundlemanager_ecological_rule_manager/blob/master/LICENSE) ，请自由地享受和参与开源。
