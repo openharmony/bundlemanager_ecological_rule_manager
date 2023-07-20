@@ -45,12 +45,3 @@
 |GetInitialSceneCode(const std::string &bundleName, std::string &originalSceneCode): int32_t|获取指定应用的场景值。|
 |GetSelfSceneCode(std::string &sceneCode): int32_t|获取自身应用的场景值。|
 |GetAdsVerificationVersion(int32_t &version): int32_t|获取广告验签的版本。|
-
-### 贡献代码
-
-使用过程中发现任何问题都可以提 [Issue](https://gitee.com/openharmony-sig/bundlemanager_ecological_rule_manager/issues)
-给我们，当然，我们也非常欢迎你给我们发 [PR](https://gitee.com/openharmony-sig/bundlemanager_ecological_rule_manager/pulls) 。
-
-### 开源协议
-
-本项目基于 [Apache License 2.0 ](https://gitee.com/openharmony-sig/bundlemanager_ecological_rule_manager/blob/master/LICENSE) ，请自由地享受和参与开源。
