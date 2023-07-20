@@ -1,9 +1,7 @@
 # bundlemanager_ecological_rule_manager
 
 ### 简介
-为了确保元服务的生态是可控、有序、高效的，需要对元服务的行为、结果进行管控，确保生态的有序发展，保证用户体验的同时也保障开发者的权益， 为此构建了元服
-务的生态规则管控服务(EcologicalRuleManagerService), 生态规则管控服务是OpenHarmony包管理子系统下新增的部件，该服务是SystemAbility， 即系
-统元能力，简称SA, 是一种系统服务。
+为了确保元服务的生态是可控、有序、高效的，需要对元服务的行为、结果进行管控，确保生态的有序发展，保证用户体验的同时也保障开发者的权益， 为此构建了元服务的生态规则管控服务(EcologicalRuleManagerService), 生态规则管控服务是OpenHarmony包管理子系统下新增的部件，该服务是SystemAbility， 即系统元能力，简称SA, 是一种系统服务。
 
 ### 软件架构
 ![image](figures/architecture.jpg)
