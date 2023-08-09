@@ -1,47 +1,36 @@
 # bundlemanager_ecological_rule_manager
 
-### 简介
-为了确保元服务的生态是可控、有序、高效的，需要对元服务的行为、结果进行管控，确保生态的有序发展，保证用户体验的同时也保障开发者的权益， 为此构建了元服务的生态规则管控服务(EcologicalRuleManagerService), 生态规则管控服务是OpenHarmony包管理子系统下新增的部件，该服务是SystemAbility， 即系统元能力，简称SA, 是一种系统服务。
+#### Description
+{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
 
-### 软件架构
-![image](figures/architecture.jpg)
+#### Software Architecture
+Software architecture description
 
-### 目录结构
+#### Installation
 
-```shell
-/foundation/bundlemanager/ecological_rule_mgr       # 生态规则管控服务业务代码
-├── etc                                             
-│   └── init                                        # SA启动配置文件
-├── interfaces                                      # 接口代码
-│   ├── innerkits                                   # 内部接口
-│   └── kits                                        # 外部接口
-├── profile                                         # 服务配置文件
-├── services                                        # 服务代码
-├── LICENSE                                         # 证书文件
-├── tests                                           # 开发者测试
-└── utils                                           # 工具类
-```
-### 编译构建
+1.  xxxx
+2.  xxxx
+3.  xxxx
 
-在OpenHarmony源码根目录下，调用以下指令，单独编译ecological_rule_mgr。
-```shell
-./build.sh --product-name rk3568 --ccache --build-target ecological_rule_mgr
-```
-> **说明：**
---product-name：产品名称，例如Hi3516DV300、rk3568等。
---ccache：编译时使用缓存功能。
---build-target: 编译的部件名称。
+#### Instructions
 
-### 接口说明
+1.  xxxx
+2.  xxxx
+3.  xxxx
 
-|接口名称|接口描述|
-|---|---|
-|SetAppEnhancedData(const int32_t &operType, const std::string &appData): int32_t|刷新应用的增强数据。|
-|SetRuleInfo(const std::string &ruleInfo): int32_t|刷新生态规则策略。|
-|ExemptExperience(const std::string &targetBundleName, const int32_t &rule, const int32_t &timestamp): int32_t|短时间内豁免目标应用。|
-|GetVersion(std::string &versionJson): int32_t|查询引擎版本号信息。|
-|SetSceneExperience(std::string &ruleConfig, std::string &sceneExperience): int32_t|设置场景值的体验配置。|
-|GetSceneCode(const std::string &bundleName, std::string &sceneCode): int32_t|获取指定应用的场景值。|
-|GetInitialSceneCode(const std::string &bundleName, std::string &originalSceneCode): int32_t|获取指定应用的场景值。|
-|GetSelfSceneCode(std::string &sceneCode): int32_t|获取自身应用的场景值。|
-|GetAdsVerificationVersion(int32_t &version): int32_t|获取广告验签的版本。|
+#### Contribution
+
+1.  Fork the repository
+2.  Create Feat_xxx branch
+3.  Commit your code
+4.  Create Pull Request
+
+
+#### Gitee Feature
+
+1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
+2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
+3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
+4.  The most valuable open source project [GVP](https://gitee.com/gvp)
+5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
+6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
