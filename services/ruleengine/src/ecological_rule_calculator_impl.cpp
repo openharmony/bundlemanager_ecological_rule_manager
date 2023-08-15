@@ -258,20 +258,12 @@ int32_t EcologicalRuleCalculatorImpl::QueryMatchSceneExperience(const OHOS::AAFw
         std::string transExperienceType = TransRealExperienceType(want, callerInfo, experienceType, presetCache);
         // get data lock must release
         GetRuleStrategyObjectLock();
-        EcologicalRuleEngineCache::GetInstance().GetAppEnhanceDataLock();
-
-        int32_t ret =
-            EcologicalRuleEngineCache::GetInstance().ParseAppEnhanceItem(callerInfo.packageName, want.GetBundle());
-        if (ret != SUCCESS_RULE) {
-            LOG_ERROR("[QueryMatchSceneExperience] parse app enhance failed.");
-        }
         queryRet = GetSceneExperienceFromCache(want, callerInfo, transExperienceType, presetCache, experienceRule);
     } catch (...) {
         queryRet = NO_MATCH_RULE;
         LOG_ERROR("[QueryMatchSceneExperience] fail: catch exception.");
     }
     // release data lock
-    EcologicalRuleEngineCache::GetInstance().ReleaseAppEnhanceDataLock();
     ReleaseRuleStrategyObjectLock();
 
     if (queryRet != SUCCESS_RULE) {
