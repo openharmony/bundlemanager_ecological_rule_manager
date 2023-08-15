@@ -24,7 +24,6 @@ config("ecologicalrulemgrservice_config") {
     "${innerkits_path}/include",
     "//utils/system/safwk/native/include",
     "//third_party/json/include",
-    "//third_party/openssl/include/",
     "//base/hiviewdfx/hilog/interfaces/native/innerkits/include",
     "//foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_core/include",
     "//foundation/systemabilitymgr/samgr/interfaces/innerkits/samgr_proxy/include",
@@ -66,12 +65,14 @@ ohos_shared_library("ecologicalrulemgr_service") {
     "${innerkits_path}/src/ecological_rule_mgr_service_param.cpp"
   ]
 
-  deps = [
-    "//third_party/openssl:libcrypto_shared",
-  ]
+  deps = []
   external_deps = [
     "ability_base:want",
     "ability_base:zuri",
+    "ability_runtime:abilitykit_native",
+    "ability_runtime:runtime",
+    "ability_runtime:wantagent_innerkits",
+    "bundle_framework:appexecfwk_base",
     "bundle_framework:appexecfwk_core",
     "c_utils:utils",
     "hiviewdfx_hilog_native:libhilog",

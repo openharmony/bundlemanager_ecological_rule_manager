@@ -77,6 +77,7 @@
         }
       ],
       "test": [
+        "//foundation/bundlemanager/ecological_rule_mgr/test/unittest:unittest"
       ]
     }
   }

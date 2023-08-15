@@ -135,9 +135,10 @@ int32_t EcologicalRuleMgrServiceClient::EvaluateResolveInfos(const AAFwk::Want &
     if (!CheckConnectService()) {
         return -1;
     }
+    int32_t res = ecologicalRuleMgrServiceProxy_->EvaluateResolveInfos(want, callerInfo, type, abilityInfos);
     int64_t cost = GetCurrentTimeMicro() - start;
     LOG_DEBUG("[ERMS-DFX] EvaluateResolveInfos interface cost %{public}" PRId64 " mirco seconds.", cost);
-    return 0;
+    return res;
 }
 
 int32_t EcologicalRuleMgrServiceClient::QueryStartExperience(const OHOS::AAFwk::Want &want,
