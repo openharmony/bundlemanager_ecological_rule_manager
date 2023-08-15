@@ -64,12 +64,6 @@ bool ExperienceRule::Marshalling(Parcel &parcel) const
     return true;
 }
 
-bool CallerInfo::ReadFromParcel(Parcel &parcel)
-{
-    LOG_INFO("read from parcel");
-    return true;
-}
-
 CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
 {
     auto *info = new (std::nothrow) CallerInfo();
