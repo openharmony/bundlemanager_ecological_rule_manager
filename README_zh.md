@@ -46,7 +46,7 @@
 
 ### 接口说明
 ##### 对APP提供的接口
-> 参见[接口说明](https://gitee.com/openharmony-sig/)
+> 参见[接口说明](https://gitee.com/openharmony/docs/pulls/21544)
 
 ##### 对OpenHarmoby AbilityManagerService开放的接口
 |接口名称|接口描述|

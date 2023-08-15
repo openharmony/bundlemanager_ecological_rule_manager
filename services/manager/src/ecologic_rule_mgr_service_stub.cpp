@@ -122,6 +122,21 @@ int32_t EcologicalRuleMgrServiceStub::OnEvaluateResolveInfosResult(MessageParcel
         LOG_ERROR("read type failed");
         return ERR_FAILED;
     }
+    std::vector<AbilityInfo> abilityInfos = {};
+    int32_t abilityInfoSize = 0;
+    if (!data.ReadInt32(abilityInfoSize)) {
+        LOG_ERROR("read abilityInfoSize failed");
+        return ERR_FAILED;
+    }
+    for (int32_t i = 0; i < abilityInfoSize; i++) {
+        sptr<AbilityInfo> abilityInfo = data.ReadParcelable<AbilityInfo>();
+        if (abilityInfo == nullptr) {
+            LOG_ERROR("read abilityInfo failed");
+            return ERR_FAILED;
+        }
+        abilityInfos.emplace_back(*abilityInfo);
+    }
+    EvaluateResolveInfos(*want, *caller, type, abilityInfos);
     return ERR_OK;
 }
 

@@ -17,8 +17,7 @@ declare namespace ecologicalRuleDataManager {
    * Sets a rule into the ecological rule manager.
    *
    * @permission ohos.permission.MANAGE_ECOLOGICAL_RULE
-   * @param { string } ruleInfo - Rule information.
-   * @returns { number } Returns the result code of this operation.
+   * @param { object } ruleInfo - Rule information.
    * @throws { BusinessError } 201 - Permission denied.
    * @throws { BusinessError } 202 - Permission denied. A non-system application calls a system API.
    * @throws { BusinessError } 401 - The parameter check failed.
@@ -26,15 +25,14 @@ declare namespace ecologicalRuleDataManager {
    * @systemapi
    * @since 10
    */
-  function setRuleInfo(ruleInfo: string): number;
+  function setRuleInfo(ruleInfo: object);
 
   /**
    * Sets scene experience corresponding to a rule into the ecological rule manager.
    *
    * @permission ohos.permission.MANAGE_ECOLOGICAL_RULE
-   * @param { string } ruleConfig - Rule information.
-   * @param { string } sceneExperience - Scene experience.
-   * @returns { number } Returns the result code of this operation.
+   * @param { object } ruleConfig - Rule information.
+   * @param { object } sceneExperience - Scene experience.
    * @throws { BusinessError } 201 - Permission denied.
    * @throws { BusinessError } 202 - Permission denied. A non-system application calls a system API.
    * @throws { BusinessError } 401 - The parameter check failed.
@@ -42,7 +40,7 @@ declare namespace ecologicalRuleDataManager {
    * @systemapi
    * @since 10
    */
-  function setSceneExperience(ruleConfig: string, sceneExperience: string): number;
+  function setSceneExperience(ruleConfig: object, sceneExperience: object);
 
   /**
    * Exempts experience for a bundle, which will be allowed by the ecological rule manager with a given duration.
@@ -59,7 +57,7 @@ declare namespace ecologicalRuleDataManager {
    * @systemapi
    * @since 10
    */
-  function exemptExperience(targetBundleName: string, rule: number, timestamp: number): number;
+  function exemptExperience(targetBundleName: string, rule: number, timestamp: number);
 
   /**
    * Obtains the version of the ecological rule manager.
@@ -79,8 +77,7 @@ declare namespace ecologicalRuleDataManager {
    *
    * @permission ohos.permission.MANAGE_ECOLOGICAL_RULE
    * @param { number } operationType - Operation type, which can be -1 (delete data), 0 (full replace), or 1 (append data).
-   * @param { string } appData - Enhanced application data.
-   * @returns { number } Returns the result code of this operation.
+   * @param { object } appData - Enhanced application data.
    * @throws { BusinessError } 201 - Permission denied.
    * @throws { BusinessError } 202 - Permission denied. A non-system application calls a system API.
    * @throws { BusinessError } 401 - The parameter check failed.
@@ -88,7 +85,7 @@ declare namespace ecologicalRuleDataManager {
    * @systemapi
    * @since 10
    */
-  function setAppEnhancedData(operationType: number, appData: string): number;
+  function setAppEnhancedData(operationType: number, appData: object);
 }
 
 export default ecologicalRuleDataManager;
