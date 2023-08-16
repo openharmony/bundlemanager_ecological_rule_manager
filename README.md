@@ -178,4 +178,4 @@ In the following example, addCardOwners contains com.app.launcher, indicating th
 ##### 2.3 Deliver App Enhancement Data:
 App enhancement data is an extended interface, which can be implemented by developers as required.
 Interface Definition：function setAppEnhancedDatas(operType: number, appData: string):：number。
-This interface is used to extend rule instructions. Some app attribute information is required in some scenarios. For example, if you need to know which apps are in the blacklist for rule determination, this interface can be used to deliver the app blacklist.
+This interface is used to extend rule instructions. Some app attribute information is required in some scenarios. For example, if you need to know which apps are in the blocklist for rule determination, this interface can be used to deliver the app blocklist.
