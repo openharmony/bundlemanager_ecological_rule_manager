@@ -1,8 +1,9 @@
 # bundlemanager_ecological_rule_manager
 
 ### 简介
-为了确保元服务的生态是可控、有序、高效的，需要对元服务的行为、结果进行管控，确保生态的有序发展，保证用户体验的同时也保障开发者的权益， 为此构建了元服务的生态规则管控服务(EcologicalRuleManagerService), 生态规则管控服务是OpenHarmony包管理子系统下新增的部件，该服务是SystemAbility， 即系统元能力，简称SA, 是一种系统服务。生态规则管控服务负责存储RuleMgrApp下发的规则数据，在元服务加载，拉起，加桌时，根据规则数据，识别对应的场景，并返回场景对应的用户体验（允许，禁止，弹窗确认等）。
-
+生态规则管控服务负责对用户体验高敏感的行为（跳转、添加桌面卡片、免安装元服务）进行管控，确保整个生态的有序发展；
+在敏感行为发生时，支持根据规则策略数据，识别场景，做到场景化的体验管控；
+开发者可以基于场景，进行业务的差异化经营与分析，从而提升开发者的精细化运营诉求。
 
 ### 软件架构
 ![image](figures/architecture_zh.jpg)
@@ -42,18 +43,6 @@
 --product-name：产品名称，例如Hi3516DV300、rk3568等。
 --ccache：编译时使用缓存功能。
 --build-target: 编译的部件名称。
-
-
-### 接口说明
-##### 对APP提供的接口
-> 参见[接口说明](https://gitee.com/openharmony/docs/pulls/21544)
-
-##### 对OpenHarmony AbilityManagerService开放的接口
-|接口名称|接口描述|
-|---|---|
-|QueryStartExperience(const AAFwk::Want &want, const CallerInfo &callerInfo, ExperienceRule &rule): int32_t|查询元服务拉起体验。callerInfo为调用者信息，want为被拉起元服务信息；rule为出参，返回是否允许拉起，还是弹窗由用户确认|
-|QueryFreeInstallExperience(const AAFwk::Want &want, const CallerInfo &callerInfo, ExperienceRule &rule): int32_t|查询元服务免安装体验。callerInfo为调用者信息，want为免安装元服务信息；rule为出参，返回是否允许免安装，还是弹窗由用户确认|
-|IsSupportPublishForm(const vector<AAFwk::Want> &wants, const CallerInfo &callerInfo, bool &bSupport): int32_t|查询元服务是否允许加桌。callerInfo为调用者信息，want为加桌的元服务信息；bSupport为出参，返回是否允许加桌。|
 
 ### 使用说明
 规则管控服务需要开发RuleMgrApp，下发生态规则管控策略到EcologicalRuleManagerService，才能在元服务的加载，拉起，加桌时起到管控的作用。主要有如下几步：
