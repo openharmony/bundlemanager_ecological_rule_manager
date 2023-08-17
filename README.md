@@ -1,7 +1,9 @@
 # bundlemanager_ecological_rule_manager
 
 ###Introduction
-To ensure that the AtomicService ecosystem is controllable, orderly, and efficient, the behavior and results of the AtomicService must be controlled to ensure the orderly development of the ecosystem, ensure user experience, and protect the rights and interests of developers. Therefore, the ecological rule management service (EcologicalRuleManagerService, ERMS) of AtomicService is constructed. The ecological rule management service is a new component under the OpenHarmony Bundle management subsystem. The service is SystemAbility, that is, System Meta Capability, SA for short, is a System Service. The ecosystem rule management service stores rule data delivered by RuleMgrApp. When a AtomicService is loaded, started, or added to desktop, the ecosystem rule management service identifies the corresponding scenario based on the rule data and returns the user experience (allowed, forbidden, and pop-up confirmation) corresponding to the scenario.
+The ecosystem rule management service is responsible for controlling behaviors that are highly sensitive to user experience(Redirect, add desktop cards, and install-free AtomicService) to ensure the orderly development of the whole ecosystem;
+When sensitive behaviors occur, scenarios can be identified based on rules to implement scenario-based experience management.
+Developers can perform differentiated operation and analysis on services based on scenarios to improve their refined operation requirements.
 
 
 ### Software Architecture
@@ -41,17 +43,6 @@ In the root directory of the OpenHarmony source code, invoke the following comma
 --product-name: product name, for example, Hi3516D V300 or rk3568.
 --ccache: The cache function is used during compilation.
 --build-target: name of the compiled component.
-
-### Interface Description
-##### Interfaces provided for apps
-> refer [Interface Description](https://gitee.com/openharmony/docs/pulls/21544)
-
-##### Interfaces Opened to OpenHarmony AbilityManagerService
-|Interface Name|Interface Description|
-|---|---|
-|QueryStartExperience(const AAFwk::Want &want, const CallerInfo &callerInfo, ExperienceRule &rule): int32_t|This interface is used to query the experience of starting a AtomicService. callerInfo indicates the information about the caller, and want indicates the information about the AtomicService to be started. rule is an output parameter. Whether to enable the startup is returned or a dialog box is displayed for users to confirm.|
-|QueryFreeInstallExperience(const AAFwk::Want &want, const CallerInfo &callerInfo, ExperienceRule &rule): int32_t|This interface is used to query the installation-free experience of AtomicService. callerInfo indicates the caller information, and want indicates the installation-free AtomicService information. rule is an output parameter, indicating whether installation is not allowed or whether a dialog box is displayed for users to confirm.|
-|IsSupportPublishForm(const vector<AAFwk::Want> &wants, const CallerInfo &callerInfo, bool &bSupport): int32_t|Queries whether the AtomicService can be added to desktop. callerInfo indicates the information about the caller, and want indicates the information about the AtomicService to be added to desktop. bSupport is an output parameter, indicating whether to add desktop.|
 
 ### Instructions
 The rule management service needs to develop RuleMgrApp and deliver ecosystem rule management policies to EcologicalRuleManagerService. In this way, AtomicService can be loaded, started, and added to desktop. The main steps are as follows:
