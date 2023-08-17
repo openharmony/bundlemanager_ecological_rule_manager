@@ -59,8 +59,6 @@ public:
     EcologicalRuleCalculator &operator = (const EcologicalRuleCalculator &other) = delete;
 
     static EcologicalRuleCalculator *GetInstance();
-    bool CalculateOperationExpression(const OHOS::AAFwk::Want &want, const CallerInfo &callerInfo,
-        std::map<std::string, CalculatorResult> &presetCache, std::string &expression);
     virtual int32_t QueryMatchSceneExperience(const OHOS::AAFwk::Want &want, const CallerInfo &callerInfo,
         const std::string experienceType, ExperienceRule &experienceRule);
 

@@ -31,31 +31,6 @@ EcologicalRuleCalculator *EcologicalRuleCalculator::GetInstance()
     return ecologicalRuleCalculator;
 }
 
-bool EcologicalRuleCalculator::CalculateOperationExpression(const OHOS::AAFwk::Want &want, const CallerInfo &callerInfo,
-    std::map<std::string, CalculatorResult> &presetCache, std::string &expression)
-{
-    BaseExp *rootExp = AnalysisDsl(expression);
-    if (rootExp == nullptr) {
-        LOG_ERROR("[CalculateOperationExpression] AnalysisDsl failed expression is %{public}s.", expression.c_str());
-        return false;
-    }
-    CalculatorResult calculatorResult;
-    try {
-        calculatorResult = rootExp->Interpreter(want, callerInfo, presetCache);
-    } catch (...) {
-        LOG_ERROR("[CalculateOperationExpression]catch exception expression is %{public}s", expression.c_str());
-        delete rootExp;
-        return false;
-    }
-
-    delete rootExp;
-    if (calculatorResult.type != BOOL_TYPE) {
-        return false;
-    } else {
-        return calculatorResult.logicRet;
-    }
-}
-
 BaseExp *EcologicalRuleCalculator::AnalysisDsl(const std::string expression)
 {
     std::stack<BaseExp *> expStack;
