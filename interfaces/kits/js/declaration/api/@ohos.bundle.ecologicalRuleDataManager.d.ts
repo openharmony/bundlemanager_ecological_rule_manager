@@ -49,7 +49,6 @@ declare namespace ecologicalRuleDataManager {
    * @param { string } targetBundleName - Name of the target bundle.
    * @param { number } rule - Rule to be exempted.
    * @param { number } timestamp - Duration for which the exemption is valid.
-   * @returns { number } Returns the result code of this operation.
    * @throws { BusinessError } 201 - Permission denied.
    * @throws { BusinessError } 202 - Permission denied. A non-system application calls a system API.
    * @throws { BusinessError } 401 - The parameter check failed.
