@@ -57,7 +57,7 @@ ohos_unittest("EcologicalRuleMgrServiceClientTest") {
      "common_event_service:cesfwk_innerkits",
      "common_event_service:cesfwk_innerkits",
      "c_utils:utils",
-     "hiviewdfx_hilog_native:libhilog",
+     "hilog:libhilog",
      "ipc:ipc_core",
      "safwk:system_ability_fwk",
      "samgr:samgr_proxy",

@@ -49,7 +49,7 @@ ohos_shared_library("ecologicalrulemgrservice") {
     "ability_runtime:wantagent_innerkits",
     "ability_runtime:abilitykit_native",
     "c_utils:utils",
-    "hiviewdfx_hilog_native:libhilog",
+    "hilog:libhilog",
     "ipc:ipc_core",
     "napi:ace_napi"
   ]
