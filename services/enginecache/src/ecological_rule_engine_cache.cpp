@@ -120,8 +120,7 @@ int32_t EcologicalRuleEngineCache::GetMapItem(nlohmann::json *&inputJson, const 
 
 int32_t EcologicalRuleEngineCache::RefreshAppEnhanceData(const int32_t operType, const std::string &appData)
 {
-    LOG_INFO("refresh enhance success, operType = %{public}d, appData.length = %{public}lu", operType,
-        appData.length());
+    LOG_INFO("refresh enhance success, operType = %{public}d", operType);
     return 0;
 }
 
@@ -387,8 +386,6 @@ void EcologicalRuleEngineCache::ClearSceneCodeCache()
         std::list<struct SceneCodeValue> &sceneCodeList = iter->second;
         for (auto iterList = sceneCodeList.begin(); iterList != sceneCodeList.end();) {
             if (iterList->timestamp + EngineCacheConstants::TIMER_INTERVAL_60MIN_MS < curTime) {
-                LOG_DEBUG("erase scene_code,bundle:%{public}s,sceneCode:%{public}s,timestamp:%{public}lu",
-                    iter->first.c_str(), iterList->sceneCode.c_str(), iterList->timestamp);
                 sceneCodeList.erase(iterList++);
             } else {
                 iterList++;

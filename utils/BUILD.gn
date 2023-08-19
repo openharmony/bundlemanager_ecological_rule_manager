@@ -29,7 +29,7 @@ ohos_source_set("ecologicalrulemgrservice_utils") {
   ]
 
   external_deps = [
-    "hiviewdfx_hilog_native:libhilog",
+    "hilog:libhilog",
   ]
 
   part_name = "ecological_rule_mgr"
