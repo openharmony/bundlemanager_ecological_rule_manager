@@ -470,7 +470,6 @@ int32_t EcologicalRuleCalculatorImpl::ConstructRuleStrategyObjects()
     } catch (...) {
         LOG_ERROR("fail: catch exception.");
     }
-    LOG_INFO("finish! ruleStrategyObjects size is %{public}lu", ruleStrategyObjects.size());
     ReleaseRuleStrategyObjectLock();
     return SUCCESS_RULE;
 }
