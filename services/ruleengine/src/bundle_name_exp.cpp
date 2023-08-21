@@ -18,10 +18,6 @@
 namespace OHOS {
 namespace EcologicalRuleMgrService {
 #define TAG "RULE_ENGINE"
-BundleNameExp::BundleNameExp()
-{
-    child = nullptr;
-}
 
 BundleNameExp::BundleNameExp(BaseExp *child) : child(child) {}
 
@@ -37,10 +33,6 @@ CalculatorResult BundleNameExp::Interpreter(const OHOS::AAFwk::Want &want, const
     calculatorResult.type = STRING_TYPE;
     try {
         CalculatorResult childCalculatorResult = child->Interpreter(want, callerInfo, presetCache);
-        if (childCalculatorResult.type != STRING_TYPE) {
-            LOG_ERROR("[BundleNameExp] fail: child result type is invalid.");
-            throw std::runtime_error("child result is invalid");
-        }
 
         std::string keyWord = childCalculatorResult.stringRet;
         transform(keyWord.begin(), keyWord.end(), keyWord.begin(), ::tolower);

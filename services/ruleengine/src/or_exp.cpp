@@ -18,12 +18,6 @@
 namespace OHOS {
 namespace EcologicalRuleMgrService {
 #define TAG "RULE_ENGINE"
-OrExp::OrExp()
-{
-    leftChild = nullptr;
-    rightChild = nullptr;
-}
-
 OrExp::OrExp(BaseExp *leftChild, BaseExp *rightChild) : leftChild(leftChild), rightChild(rightChild) {}
 
 OrExp::~OrExp()

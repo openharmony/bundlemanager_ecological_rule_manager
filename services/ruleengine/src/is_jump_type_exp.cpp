@@ -20,12 +20,6 @@ namespace OHOS {
 namespace EcologicalRuleMgrService {
 const std::string IsJumpTypeExp::OPERATION_NAME = "IS_JUMP_TYPE";
 #define TAG "RULE_ENGINE"
-IsJumpTypeExp::IsJumpTypeExp()
-{
-    leftChild = nullptr;
-    middleChild = nullptr;
-    rightChild = nullptr;
-}
 
 IsJumpTypeExp::IsJumpTypeExp(BaseExp *leftChild, BaseExp *middleChild, BaseExp *rightChild)
     : leftChild(leftChild), middleChild(middleChild), rightChild(rightChild)
@@ -46,22 +40,10 @@ CalculatorResult IsJumpTypeExp::Interpreter(const OHOS::AAFwk::Want &want, const
     calculatorResult.logicRet = false;
     try {
         CalculatorResult leftCalculatorResult = leftChild->Interpreter(want, callerInfo, presetCache);
-        if (leftCalculatorResult.type != STRING_TYPE) {
-            LOG_ERROR("[IsJumpTypeExp] fail: left Child result type is invalid.");
-            throw std::runtime_error("IsJumpTypeExp left result is invalid");
-        }
 
         CalculatorResult middleCalculatorResult = middleChild->Interpreter(want, callerInfo, presetCache);
-        if (middleCalculatorResult.type != STRING_TYPE) {
-            LOG_ERROR("[IsJumpTypeExp] fail: middleChild result type is invalid.");
-            throw std::runtime_error("IsJumpTypeExp middle result is invalid");
-        }
 
         CalculatorResult rightCalculatorResult = rightChild->Interpreter(want, callerInfo, presetCache);
-        if (rightCalculatorResult.type != STRING_TYPE) {
-            LOG_ERROR("[IsJumpTypeExp] fail: rightChild result type is invalid.");
-            throw std::runtime_error("IsJumpTypeExp right result is invalid");
-        }
 
         std::string cacheKey = OPERATION_NAME + leftCalculatorResult.stringRet + middleCalculatorResult.stringRet +
             rightCalculatorResult.stringRet;

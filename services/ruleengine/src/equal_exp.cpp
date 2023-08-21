@@ -18,11 +18,6 @@
 namespace OHOS {
 namespace EcologicalRuleMgrService {
 #define TAG "RULE_ENGINE"
-EqualExp::EqualExp()
-{
-    leftChild = nullptr;
-    rightChild = nullptr;
-}
 
 EqualExp::EqualExp(BaseExp *leftChild, BaseExp *rightChild) : leftChild(leftChild), rightChild(rightChild) {}
 
@@ -40,17 +35,7 @@ CalculatorResult EqualExp::Interpreter(const OHOS::AAFwk::Want &want, const Call
     calculatorResult.logicRet = false;
     try {
         CalculatorResult leftCalculatorResult = leftChild->Interpreter(want, callerInfo, presetCache);
-        if (leftCalculatorResult.type != STRING_TYPE) {
-            LOG_ERROR("[EqualExp] fail: leftchild result type is invalid.");
-            throw std::runtime_error("left child result is invalid");
-        }
-
         CalculatorResult rightCalculatorResult = rightChild->Interpreter(want, callerInfo, presetCache);
-        if (rightCalculatorResult.type != STRING_TYPE) {
-            LOG_ERROR("[EqualExp] fail: rightChild result type is invalid.");
-            throw std::runtime_error("right child result is invalid");
-        }
-
         if (leftCalculatorResult.stringRet.compare(rightCalculatorResult.stringRet) == 0) {
             calculatorResult.logicRet = true;
         }
