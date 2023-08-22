@@ -50,7 +50,7 @@ The rule management service needs to develop RuleMgrApp and deliver ecosystem ru
 #### 2 Update ecosystem management policies
 Deliver rule policy data, scenario experience, and app enhancement data to EcologicalRuleManagerService.
 ##### 2.1 Deliver rule policy data
-Rule policy data is used to describe scenario values and corresponding management and control policies. It is described in the DSL language and supports operator extension. The rule information is delivered through the function setRuleInfo(ruleInfo: string): number interface. The ruleInfo is in JSON format and describes the policy information.
+Rule policy data is used to describe scenario values and corresponding management and control policies. It is described in the DSL language and supports operator extension. The rule information is delivered through the function setRuleInfo(ruleInfo: object) interface. The ruleInfo is in JSON format and describes the policy information.
 ###### Example（ruleInfo: string）
 Deliver two rules:
 - rule 1
@@ -97,51 +97,80 @@ Corresponding ruleInfo:
 |sceneCode|SceneCode corresponding to the rule.|
 
 ##### 2.2 Deliver Scenario Experience：
-Scenario experience description: experience configuration corresponding to the scenario value and configuration of the list of packages that can be added to desktop. The function setSceneExperience(ruleConfig: string, sceneExperience: string): number interface is invoked. The values of sceneExperience and ruleConfig are in JSON format. sceneExperience describes the experience, and ruleConfig describes the name of the app package that can be added to the desktop.
+Scenario experience description: experience configuration corresponding to the scenario value and configuration of the list of packages that can be added to desktop. The function setSceneExperience(ruleConfig: object, sceneExperience: object) interface is invoked. The values of sceneExperience and ruleConfig are in JSON format. sceneExperience describes the experience, and ruleConfig describes the name of the app package that can be added to the desktop.
 
 ###### Example 1（sceneExperience: string）
 ```
 {
 	"sceneExperience": {
 		"1": {
-			"1": {"allow": true},
-			"2": {"allow": false,
-				  "want": 
-                    "{ 
-                        \"deviceId\":\"\",
-                        \"bundleName\":\"\",
-                        \"abilityName\":\"\",
-                        \"uri\":\"\",
-                        \"type\":\"\",
-                        \"flags\":0,
-                        \"action\":\"com.ecological.experience.LOAD_ABILITY\",        
-                        \"entities\":null,
-                        \"parameters\":
-                            \"{\\\"ecological_experience_open_type\\\":
-                                {\\\"5\\\":\\\"1002\\\"}
-                            }\"
-                    }"
-			    }
+			"1": {
+				"allow": true
+			},
+			"2": {
+				"allow": false,
+				"want": {
+					"deviceId": "",
+					"bundleName": "",
+					"abilityName": "",
+					"uri": "",
+					"type": "",
+					"flags": 0,
+					"action": "com.ecological.experience.LOAD_ABILITY",
+					"entities": null,
+					"parameters": {
+						"ecological_experience_open_type": {
+							"5": "1002"
+						}
+					}
+				}
+			}
 		},
 		"2": {
-			"1": {"allow": true},
-			"2": {"allow": false,
-				  "want":
-                    "{
-                        \"deviceId\":\"\",
-                        \"bundleName\":\"\",
-                        \"abilityName\":\"\",
-                        \"uri\":\"\",
-                        \"type\":\"\",
-                        \"flags\":0,
-                        \"action\":\"com.ecological.experience.OPEN_ABILITY\",
-                        \"entities\":null,
-                        \"parameters\":
-                            \"{\\\"ecological_experience_open_type\\\":
-                                {\\\"5\\\":\\\"2002\\\"}
-                            }\"
-                    }"
-			    }
+			"1": {
+				"allow": true
+			},
+			"2": {
+				"allow": false,
+				"want": {
+					"deviceId": "",
+					"bundleName": "",
+					"abilityName": "",
+					"uri": "",
+					"type": "",
+					"flags": 0,
+					"action": "com.ecological.experience.OPEN_ABILITY",
+					"entities": null,
+					"parameters": {
+						"ecological_experience_open_type": {
+							"5": "2002"
+						}
+					}
+				}
+			}
+		},
+		"5": {
+			"1": {
+				"allow": true
+			},
+			"2": {
+				"allow": false,
+				"want": {
+					"deviceId": "",
+					"bundleName": "",
+					"abilityName": "",
+					"uri": "",
+					"type": "",
+					"flags": 0,
+					"action": "com.ecological.experience.OPEN_ABILITY",
+					"entities": null,
+					"parameters": {
+						"ecological_experience_open_type": {
+							"5": "5002"
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -168,5 +197,5 @@ In the following example, addCardOwners contains com.app.launcher, indicating th
 ```
 ##### 2.3 Deliver App Enhancement Data:
 App enhancement data is an extended interface, which can be implemented by developers as required.
-Interface Definition：function setAppEnhancedDatas(operType: number, appData: string):：number。
+Interface Definition：function setAppEnhancedData(operationType: number, appData: object).
 This interface is used to extend rule instructions. Some app attribute information is required in some scenarios. For example, if you need to know which apps are in the blocklist for rule determination, this interface can be used to deliver the app blocklist.

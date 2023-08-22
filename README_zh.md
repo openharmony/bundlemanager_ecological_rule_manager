@@ -50,7 +50,7 @@
 #### 2 刷新生态管控策略
 下发规则策略数据，场景体验，APP增强数据到EcologicalRuleManagerService：
 ##### 2.1 下发规则策略数据
-规则策略数据用于描述场景值和对应的管控策略，采用DSL语言描述，支持对操作符的扩展。通过接口 function setRuleInfo(ruleInfo: string): number 下发，ruleInfo为json格式，描述策略信息。
+规则策略数据用于描述场景值和对应的管控策略，采用DSL语言描述，支持对操作符的扩展。通过接口 function setRuleInfo(ruleInfo: object) 下发，ruleInfo为json格式，描述策略信息。
 ###### 示例（ruleInfo: string）
 下发两个策略：
 - 策略1
@@ -97,51 +97,80 @@
 |sceneCode|该规则对应的场景值|
 
 ##### 2.2 下发场景体验：
-场景体验描述场景值对应的体验配置和允许加桌名单配置。通过接口 function setSceneExperience(ruleConfig: string, sceneExperience: string): number 下发，sceneExperience，ruleConfig均为json格式，sceneExperience描述体验，ruleConfig描述允许加桌的app包名。
+场景体验描述场景值对应的体验配置和允许加桌名单配置。通过接口 function setSceneExperience(ruleConfig: object, sceneExperience: object) 下发，sceneExperience，ruleConfig均为json格式，sceneExperience描述体验，ruleConfig描述允许加桌的app包名。
 
 ###### 示例1（sceneExperience: string）
 ```
 {
 	"sceneExperience": {
 		"1": {
-			"1": {"allow": true},
-			"2": {"allow": false,
-				  "want": 
-                    "{ 
-                        \"deviceId\":\"\",
-                        \"bundleName\":\"\",
-                        \"abilityName\":\"\",
-                        \"uri\":\"\",
-                        \"type\":\"\",
-                        \"flags\":0,
-                        \"action\":\"com.ecological.experience.LOAD_ABILITY\",        
-                        \"entities\":null,
-                        \"parameters\":
-                            \"{\\\"ecological_experience_open_type\\\":
-                                {\\\"5\\\":\\\"1002\\\"}
-                            }\"
-                    }"
-			    }
+			"1": {
+				"allow": true
+			},
+			"2": {
+				"allow": false,
+				"want": {
+					"deviceId": "",
+					"bundleName": "",
+					"abilityName": "",
+					"uri": "",
+					"type": "",
+					"flags": 0,
+					"action": "com.ecological.experience.LOAD_ABILITY",
+					"entities": null,
+					"parameters": {
+						"ecological_experience_open_type": {
+							"5": "1002"
+						}
+					}
+				}
+			}
 		},
 		"2": {
-			"1": {"allow": true},
-			"2": {"allow": false,
-				  "want":
-                    "{
-                        \"deviceId\":\"\",
-                        \"bundleName\":\"\",
-                        \"abilityName\":\"\",
-                        \"uri\":\"\",
-                        \"type\":\"\",
-                        \"flags\":0,
-                        \"action\":\"com.ecological.experience.OPEN_ABILITY\",
-                        \"entities\":null,
-                        \"parameters\":
-                            \"{\\\"ecological_experience_open_type\\\":
-                                {\\\"5\\\":\\\"2002\\\"}
-                            }\"
-                    }"
-			    }
+			"1": {
+				"allow": true
+			},
+			"2": {
+				"allow": false,
+				"want": {
+					"deviceId": "",
+					"bundleName": "",
+					"abilityName": "",
+					"uri": "",
+					"type": "",
+					"flags": 0,
+					"action": "com.ecological.experience.OPEN_ABILITY",
+					"entities": null,
+					"parameters": {
+						"ecological_experience_open_type": {
+							"5": "2002"
+						}
+					}
+				}
+			}
+		},
+		"5": {
+			"1": {
+				"allow": true
+			},
+			"2": {
+				"allow": false,
+				"want": {
+					"deviceId": "",
+					"bundleName": "",
+					"abilityName": "",
+					"uri": "",
+					"type": "",
+					"flags": 0,
+					"action": "com.ecological.experience.OPEN_ABILITY",
+					"entities": null,
+					"parameters": {
+						"ecological_experience_open_type": {
+							"5": "5002"
+						}
+					}
+				}
+			}
 		}
 	}
 }
@@ -169,5 +198,5 @@ com.app.launcher调用加桌接口将元服务加桌。
 ```
 ##### 2.3 下发APP增强数据：
 APP增强数据属于扩展接口，开发者可以根据需要自行实现。
-接口定义：function setAppEnhancedDatas(operType: number, appData: string):：number。
+接口定义：function setAppEnhancedData(operationType: number, appData: object)。
 该接口主要考虑是在扩展规则指令时，某些场景需要用到app的一些属性信息，比如规则判断如果需要知道哪些APP是黑名单中的APP，可以通过此接口下发APP黑名单列表。
