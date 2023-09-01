@@ -41,11 +41,11 @@
 --build-target: 编译的部件名称。
 
 ### 接口使用说明
-生态规则管控服务只对系统的AMS/BMS/FMS开放内部接口，系统根据实际需要进行接口功能扩展。
+生态规则管控服务只对系统服务开放内部接口，系统根据实际需要进行接口功能扩展。
 |接口|说明|
 |---|---|
-|QueryStartExperience(const Want &want, const CallerInfo &callerInfo, ExperienceRule &rule)：int32_t|提供给AMS使用，在元服务打开时调用。ExperienceRule为返回值，返回是否允许打开；不允许时可以返回具体的体验Want。|
-|QueryFreeInstallExperience(const Want &want, const CallerInfo &callerInfo ExperienceRule &rule)：int32_t|提供给BMS使用，在元服务免安装时调用。用于判断是否允许免安装，不允许时可以返回具体的体验Want。|
-|IsSupportPublishForm(const vector<AAFwk::Want> &wants, const CallerInfo &callerInfo, bool &bSupport)：int32_t|提供给FMS使用，在卡片加桌时调用。用于判断是否允许加桌|
-|EvaluateResolveInfos(const Want &want, const CallerInfo &callerInfo, int32_t type,std::vector<AbilityInfo> &abilityInfos)：int32_t|提供给AMS使用，根据垂类类型type对abilityInfos进行黑名单剔除，返回剔除后的列表|
+|QueryStartExperience(const Want &want, const CallerInfo &callerInfo, ExperienceRule &rule)：int32_t|提供给AbilityManagerService使用，在元服务打开时调用。ExperienceRule为返回值，返回是否允许打开；不允许时可以返回具体的体验Want。|
+|QueryFreeInstallExperience(const Want &want, const CallerInfo &callerInfo ExperienceRule &rule)：int32_t|提供给BundleManagerService使用，在元服务免安装时调用。用于判断是否允许免安装，不允许时可以返回具体的体验Want。|
+|IsSupportPublishForm(const vector<AAFwk::Want> &wants, const CallerInfo &callerInfo, bool &bSupport)：int32_t|提供给FormManagerService使用，在卡片加桌时调用。用于判断是否允许加桌|
+|EvaluateResolveInfos(const Want &want, const CallerInfo &callerInfo, int32_t type,std::vector<AbilityInfo> &abilityInfos)：int32_t|提供给AbilityManagerService使用，根据垂类类型type对abilityInfos进行黑名单剔除，返回剔除后的列表|
 
