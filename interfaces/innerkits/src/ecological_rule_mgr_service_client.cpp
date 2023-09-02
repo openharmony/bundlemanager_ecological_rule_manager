@@ -69,16 +69,13 @@ sptr<EcologicalRuleMgrServiceInterface> EcologicalRuleMgrServiceClient::ConnectS
         LOG_ERROR("GetSystemAbilityManager error");
         return nullptr;
     }
-
     auto systemAbility = samgr->CheckSystemAbility(6105);
     if (systemAbility == nullptr) {
         LOG_ERROR("CheckSystemAbility error, ECOLOGICALRULEMANAGERSERVICE_ID = 6105");
         return nullptr;
     }
-
     deathRecipient_ = new EcologicalRuleMgrServiceDeathRecipient();
     systemAbility->AddDeathRecipient(deathRecipient_);
-
     return iface_cast<EcologicalRuleMgrServiceInterface>(systemAbility);
 }
 
@@ -111,7 +108,6 @@ int32_t EcologicalRuleMgrServiceClient::QueryFreeInstallExperience(const OHOS::A
         LOG_DEBUG("callerInfo packageName is empty, allow = true");
         return 0;
     }
-
     if (!CheckConnectService()) {
         return -1;
     }
@@ -146,7 +142,6 @@ int32_t EcologicalRuleMgrServiceClient::QueryStartExperience(const OHOS::AAFwk::
         LOG_DEBUG("callerInfo packageName is empty, allow = true");
         return 0;
     }
-
     if (!CheckConnectService()) {
         return -1;
     }
@@ -185,6 +180,5 @@ void EcologicalRuleMgrServiceDeathRecipient::OnRemoteDied(const wptr<IRemoteObje
 {
     EcologicalRuleMgrServiceClient::GetInstance()->OnRemoteSaDied(object);
 }
-
 } // namespace EcologicalRuleMgrService
 } // namespace OHOS

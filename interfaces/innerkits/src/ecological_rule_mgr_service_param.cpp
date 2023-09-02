@@ -29,12 +29,10 @@ ExperienceRule *ExperienceRule::Unmarshalling(Parcel &in)
     if (rule == nullptr) {
         return nullptr;
     }
-
     if (!in.ReadBool(rule->isAllow)) {
         delete rule;
         return nullptr;
     }
-
     rule->replaceWant = in.ReadParcelable<Want>();
     return rule;
 }
@@ -56,24 +54,22 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
         LOG_ERROR("new callerInfo failed, return nullptr");
         return nullptr;
     }
-
     info->packageName = in.ReadString();
     LOG_INFO("read packageName result: %{public}s", info->packageName.c_str());
-
-    bool res = in.ReadInt32(info->uid) && in.ReadInt32(info->pid) && in.ReadInt32(info->callerAppType) && in.ReadInt32(info->targetAppType);
-
+    bool res = in.ReadInt32(info->uid) && in.ReadInt32(info->pid) && in.ReadInt32(info->callerAppType) &&
+        in.ReadInt32(info->targetAppType);
     if (!res) {
         LOG_ERROR("read callerInfo information failed");
         delete info;
         return nullptr;
     }
-
     return info;
 }
 
 bool CallerInfo::Marshalling(Parcel &parcel) const
 {
-    bool res = parcel.WriteString(packageName) && parcel.WriteInt32(uid) && parcel.WriteInt32(pid) && parcel.WriteInt32(callerAppType) && parcel.WriteInt32(targetAppType);
+    bool res = parcel.WriteString(packageName) && parcel.WriteInt32(uid) && parcel.WriteInt32(pid) &&
+        parcel.WriteInt32(callerAppType) && parcel.WriteInt32(targetAppType);
     if (!res) {
         LOG_ERROR("write CallerInfo failed");
         return false;
