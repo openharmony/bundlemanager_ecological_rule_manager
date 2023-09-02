@@ -40,33 +40,11 @@ public:
     virtual int32_t IsSupportPublishForm(const std::vector<Want> &wants, const CallerInfo &callerInfo,
         bool &bSupport) = 0;
 
-    virtual int32_t SetAppEnhancedData(const int32_t &operType, const std::string &appData) = 0;
-    virtual int32_t SetRuleInfo(const std::string &ruleInfo) = 0;
-    virtual int32_t ExemptExperience(const std::string &targetBundleName, const int32_t &rule,
-        const int32_t &timestamp) = 0;
-    virtual int32_t GetVersion(std::string &versionJson) = 0;
-    virtual int32_t SetSceneExperience(std::string &ruleConfig, std::string &sceneExperience) = 0;
-
-    virtual int32_t GetSceneCode(const std::string &bundleName, std::string &sceneCode) = 0;
-    virtual int32_t GetInitialSceneCode(const std::string &bundleName, std::string &originalSceneCode) = 0;
-
-    virtual int32_t GetSelfSceneCode(std::string &sceneCode) = 0;
-    virtual int32_t GetAdsVerificationVersion(int32_t &version) = 0;
-
     enum {
         QUERY_FREE_INSTALL_EXPERIENCE_CMD = 0,
         QUERY_START_EXPERIENCE_CMD,
         EVALUATE_RESOLVE_INFO_CMD,
         IS_SUPPORT_PUBLISH_FORM_CMD,
-        GET_ENGINE_VERSION_CMD = 10,
-        SET_EXEMPT_EXPERIENCE_CMD,
-        SET_RULE_INFO_CMD,
-        SET_APP_ENHANCED_DATA_CMD,
-        SET_SCENE_EXPERIENCE_CMD,
-        GET_SCENE_CODE_CMD = 20,
-        GET_ORIGINAL_SCENE_CODE_CMD,
-        GET_SELF_SCENE_CODE_CMD = 30,
-        GET_ADS_VERIFICATION_VERSION_CMD
     };
 
     enum ErrCode {
