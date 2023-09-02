@@ -34,8 +34,10 @@ enum class ServiceRunningState {
     STATE_NOT_START,
     STATE_RUNNING
 };
-
-string GetBundleNameByUid(const int32_t uid);
+enum ReturnCode {
+    SUCCESS = 0,
+    ERROR = -1,
+};
 
 class EcologicalRuleMgrService : public SystemAbility, public EcologicalRuleMgrServiceStub {
     DECLARE_SYSTEM_ABILITY(EcologicalRuleMgrService);
@@ -54,32 +56,14 @@ public:
     int32_t QueryStartExperience(const Want &want, const CallerInfo &callerInfo, ExperienceRule &rule) override;
     int32_t IsSupportPublishForm(const vector<Want> &wants, const CallerInfo &callerInfo, bool &bSupport) override;
 
-    int32_t SetAppEnhancedData(const int32_t &operType, const string &appData) override;
-    int32_t SetRuleInfo(const string &ruleInfo) override;
-    int32_t ExemptExperience(const string &targetBundleName, const int32_t &rule, const int32_t &timestamp) override;
-    int32_t GetVersion(string &versionJson) override;
-    int32_t SetSceneExperience(string &ruleConfig, string &sceneExperience) override;
-
-    int32_t GetSceneCode(const string &bundleName, string &sceneCode) override;
-    int32_t GetInitialSceneCode(const string &bundleName, string &originalSceneCode) override;
-
-    int32_t GetSelfSceneCode(string &sceneCode) override;
-    int32_t GetAdsVerificationVersion(int32_t &version) override;
-
-    static mutex appRemoteObjLock_;
-    static condition_variable conditionVal_;
-
 protected:
     void OnStart() override;
     void OnStop() override;
 
 private:
-    void setDefaultRule(ExperienceRule &rule);
     static mutex instanceLock_;
-    static mutex conditionMutex_;
     static sptr<EcologicalRuleMgrService> instance_;
     ServiceRunningState state_;
-    pthread_t loadThreadId = 0;
 };
 } // EcologicalRuleMgrService
 } // namespace OHOS
