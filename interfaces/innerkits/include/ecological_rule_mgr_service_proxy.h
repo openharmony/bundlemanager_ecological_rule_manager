@@ -37,19 +37,6 @@ public:
     int32_t QueryStartExperience(const Want &want, const CallerInfo &callerInfo, ExperienceRule &rule) override;
     int32_t IsSupportPublishForm(const std::vector<Want> &wants, const CallerInfo &callerInfo, bool &bSupport) override;
 
-    int32_t SetAppEnhancedData(const int32_t &operType, const std::string &appData) override;
-    int32_t SetRuleInfo(const std::string &ruleInfo) override;
-    int32_t ExemptExperience(const std::string &targetBundleName, const int32_t &rule,
-        const int32_t &timestamp) override;
-    int32_t GetVersion(std::string &versionJson) override;
-    int32_t SetSceneExperience(std::string &ruleConfig, std::string &sceneExperience) override;
-
-    int32_t GetSceneCode(const std::string &bundleName, std::string &sceneCode) override;
-    int32_t GetInitialSceneCode(const std::string &bundleName, std::string &originalSceneCode) override;
-
-    int32_t GetSelfSceneCode(std::string &sceneCode) override;
-    int32_t GetAdsVerificationVersion(int32_t &version) override;
-
     template <typename T> bool ReadParcelableVector(std::vector<T> &parcelableVector, MessageParcel &reply);
 
 private:

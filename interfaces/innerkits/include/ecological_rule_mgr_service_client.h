@@ -48,18 +48,6 @@ public:
     int32_t QueryStartExperience(const AAFwk::Want &want, const CallerInfo &callerInfo, ExperienceRule &rule);
     int32_t IsSupportPublishForm(const vector<AAFwk::Want> &wants, const CallerInfo &callerInfo, bool &bSupport);
 
-    int32_t SetAppEnhancedData(const int32_t &operType, const string &appData);
-    int32_t SetRuleInfo(const string &ruleInfo);
-    int32_t ExemptExperience(const string &targetBundleName, const int32_t &rule, const int32_t &timestamp);
-    int32_t GetVersion(string &versionJson);
-    int32_t SetSceneExperience(string &ruleConfig, string &sceneExperience);
-
-    int32_t GetSceneCode(const string &bundleName, string &sceneCode);
-    int32_t GetInitialSceneCode(const string &bundleName, string &originalSceneCode);
-
-    int32_t GetSelfSceneCode(string &sceneCode);
-    int32_t GetAdsVerificationVersion(int32_t &version);
-
 private:
     EcologicalRuleMgrServiceClient();
     ~EcologicalRuleMgrServiceClient();

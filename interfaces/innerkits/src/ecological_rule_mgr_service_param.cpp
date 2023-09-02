@@ -29,38 +29,21 @@ ExperienceRule *ExperienceRule::Unmarshalling(Parcel &in)
     if (rule == nullptr) {
         return nullptr;
     }
-
     if (!in.ReadBool(rule->isAllow)) {
         delete rule;
         return nullptr;
     }
-
-    if (!in.ReadString(rule->sceneCode)) {
-        delete rule;
-        return nullptr;
-    }
-
     rule->replaceWant = in.ReadParcelable<Want>();
-
     return rule;
 }
 
 bool ExperienceRule::Marshalling(Parcel &parcel) const
 {
-    if (!parcel.WriteBool(isAllow)) {
-        LOG_ERROR("write isAllow failed");
+    bool res = parcel.WriteBool(isAllow) && parcel.WriteParcelable(replaceWant);
+    if (!res) {
+        LOG_ERROR("ExperienceRule Marshalling failed");
         return false;
     }
-
-    if (!parcel.WriteString(sceneCode)) {
-        LOG_ERROR("write sceneCode failed");
-        return false;
-    }
-    if (!parcel.WriteParcelable(replaceWant)) {
-        LOG_ERROR("write replaceWant failed");
-        return false;
-    }
-
     return true;
 }
 
@@ -71,61 +54,24 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
         LOG_ERROR("new callerInfo failed, return nullptr");
         return nullptr;
     }
-
     info->packageName = in.ReadString();
     LOG_INFO("read packageName result: %{public}s", info->packageName.c_str());
-
-    if (!in.ReadInt32(info->uid)) {
-        LOG_ERROR("read uid failed");
+    bool res = in.ReadInt32(info->uid) && in.ReadInt32(info->pid) && in.ReadInt32(info->callerAppType) &&
+        in.ReadInt32(info->targetAppType);
+    if (!res) {
+        LOG_ERROR("read callerInfo information failed");
         delete info;
         return nullptr;
     }
-
-    if (!in.ReadInt32(info->pid)) {
-        LOG_ERROR("read pid failed");
-        delete info;
-        return nullptr;
-    }
-
-    if (!in.ReadInt32(info->callerAppType)) {
-        LOG_ERROR("read callerAppType failed");
-        delete info;
-        return nullptr;
-    }
-
-    if (!in.ReadInt32(info->targetAppType)) {
-        LOG_ERROR("read targetAppType failed");
-        delete info;
-        return nullptr;
-    }
-
     return info;
 }
 
 bool CallerInfo::Marshalling(Parcel &parcel) const
 {
-    if (!parcel.WriteString(packageName)) {
-        LOG_ERROR("write packageName failed");
-        return false;
-    }
-
-    if (!parcel.WriteInt32(uid)) {
-        LOG_ERROR("write uid failed");
-        return false;
-    }
-
-    if (!parcel.WriteInt32(pid)) {
-        LOG_ERROR("write pid failed");
-        return false;
-    }
-
-    if (!parcel.WriteInt32(callerAppType)) {
-        LOG_ERROR("write callerAppType failed");
-        return false;
-    }
-
-    if (!parcel.WriteInt32(targetAppType)) {
-        LOG_ERROR("write targetAppType failed");
+    bool res = parcel.WriteString(packageName) && parcel.WriteInt32(uid) && parcel.WriteInt32(pid) &&
+        parcel.WriteInt32(callerAppType) && parcel.WriteInt32(targetAppType);
+    if (!res) {
+        LOG_ERROR("write CallerInfo failed");
         return false;
     }
     return true;

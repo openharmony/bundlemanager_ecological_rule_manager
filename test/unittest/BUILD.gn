@@ -20,8 +20,6 @@ config("module_private_config") {
 
   include_dirs = [
     "../../services/manager/include",
-    "../../services/ruleengine/include",
-    "../../services/enginecache/include",
     "include",
     "${innerkits_path}/include",
     "//utils/system/safwk/native/include",
@@ -63,8 +61,6 @@ ohos_unittest("EcologicalRuleMgrServiceClientTest") {
      "samgr:samgr_proxy",
      "access_token:libaccesstoken_sdk",
      "access_token:libtokenid_sdk",
-     "access_token:libnativetoken",
-     "access_token:libtoken_setproc",
    ]
 }
 

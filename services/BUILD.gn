@@ -18,8 +18,6 @@ config("ecologicalrulemgrservice_config") {
   include_dirs = [
     "include",
     "./manager/include",
-    "./enginecache/include",
-    "./ruleengine/include",
     "../utils/include",
     "${innerkits_path}/include",
     "//utils/system/safwk/native/include",
@@ -53,15 +51,6 @@ ohos_shared_library("ecologicalrulemgr_service") {
   sources = [
     "manager/src/ecologic_rule_mgr_service.cpp",
     "manager/src/ecologic_rule_mgr_service_stub.cpp",
-    "enginecache/src/ecological_rule_engine_cache.cpp",
-    "ruleengine/src/ecological_rule_calculator.cpp",
-    "ruleengine/src/ecological_rule_calculator_impl.cpp",
-    "ruleengine/src/bundle_name_exp.cpp",
-    "ruleengine/src/equal_exp.cpp",
-    "ruleengine/src/or_exp.cpp",
-    "ruleengine/src/var_exp.cpp",
-    "ruleengine/src/and_exp.cpp",
-    "ruleengine/src/is_jump_type_exp.cpp",
     "${innerkits_path}/src/ecological_rule_mgr_service_param.cpp"
   ]
 

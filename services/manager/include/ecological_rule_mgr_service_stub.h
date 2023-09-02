@@ -42,15 +42,11 @@ public:
     ~EcologicalRuleMgrServiceStub();
     int32_t OnRemoteRequest(uint32_t code, MessageParcel &data, MessageParcel &reply, MessageOption &option) override;
 
-    static constexpr const char* PERMISSION_MANAGE_ECOLOGICAL_RULE = "ohos.permission.MANAGE_ECOLOGICAL_RULE";
-    static constexpr const char* PERMISSION_GET_SCENE_CODE = "ohos.permission.GET_SCENE_CODE";
-
 protected:
     static void SendQueryFreeInstallExperienceResult(int32_t &code, bool &hasNewVersion, std::string &appUpdateInfo);
     static void SendEvaluateResolveInfosResult(int32_t &code, bool &hasNewVersion, std::string &appUpdateInfo);
     static void SendQueryStartExperienceResult(int32_t &code, bool &hasNewVersion, std::string &appUpdateInfo);
     static void SendIsSupportPublishFormResult(int32_t &code, bool &hasNewVersion, std::string &appUpdateInfo);
-    bool GetCallerName(std::string &pkgName);
 
     bool updateServiceInit_ = false;
     std::condition_variable waitInitCondition_;
@@ -66,18 +62,6 @@ private:
     int32_t OnQueryStartExperienceResult(MessageParcel &data, MessageParcel &reply);
     int32_t OnIsSupportPublishFormResult(MessageParcel &data, MessageParcel &reply);
 
-    int32_t OnSetAppEnhancedDataResult(MessageParcel &data, MessageParcel &reply);
-    int32_t OnSetRuleInfoResult(MessageParcel &data, MessageParcel &reply);
-    int32_t OnExemptExperienceResult(MessageParcel &data, MessageParcel &reply);
-    int32_t OnSetSceneExperienceResult(MessageParcel &data, MessageParcel &reply);
-    int32_t OnGetVersionResult(MessageParcel &data, MessageParcel &reply);
-
-    int32_t OnGetSceneCodeResult(MessageParcel &data, MessageParcel &reply);
-    int32_t OnGetInitialSceneCodeResult(MessageParcel &data, MessageParcel &reply);
-
-    int32_t OnGetSelfSceneCodeResult(MessageParcel &data, MessageParcel &reply);
-    int32_t OnGetAdsVerificationVersionResult(MessageParcel &data, MessageParcel &reply);
-
     bool EnforceInterceToken(MessageParcel &data);
     template <typename T> bool WriteParcelableVector(const std::vector<T> &parcelableVector, MessageParcel &reply);
 
@@ -86,7 +70,6 @@ private:
 
     const int32_t MAX_WANT_SIZE = 15;
 
-    bool VerifyCallingPermission(const std::string &permissionName);
     bool VerifySystemApp();
 };
 } // EcologicalRuleMgrService

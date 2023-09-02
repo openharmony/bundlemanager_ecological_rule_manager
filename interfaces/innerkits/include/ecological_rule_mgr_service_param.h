@@ -27,7 +27,6 @@ using Want = OHOS::AAFwk::Want;
 
 struct ExperienceRule : public Parcelable {
     bool isAllow = true;
-    std::string sceneCode = "";
     sptr<Want> replaceWant = nullptr;
     bool Marshalling(Parcel &parcel) const override;
     static ExperienceRule *Unmarshalling(Parcel &parcel);
