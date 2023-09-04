@@ -1,7 +1,7 @@
 # bundlemanager_ecological_rule_manager
 
 ### 简介
-生态规则管控服务提供一种系统的扩展能力，可以对用户体验的行为（跳转、添加桌面卡片、免安装元服务）进行管控。
+生态规则管控服务提供一种系统的扩展能力，设备厂商可以在定制设备上（2B合作项目等），对应用的行为（跳转、添加桌面卡片、免安装元服务）进行管控，从而定制出满足厂商管控要求的用户体验。
 
 
 ### 软件架构
@@ -10,8 +10,9 @@
 以下是对于上图关键字段的描述信息：
 
 - `App`：App，在打开元服务时会受到生态规则服务的管控。
-- `FormManagerService`：卡片管理服务。
-- `AbilityManagerService`：用于协调各Ability运行关系、及对生命周期进行调度的系统服务。
+- `AbilityManagerService`：元能力管理服务，用于协调各Ability运行关系、及对生命周期进行调度的系统服务。 
+- `FormManagerService`：卡片管理服务，管理卡片的生命周期，并维护卡片信息以及卡片事件的调度。
+- `BundleManagerService`：包管理服务，负责应用安装包的管理，提供安装包的信息查询、安装、更新、卸载和包信息存储等能力。
 - `EcologicalRuleManagerServie`：生态规则管控服务，对元服务的拉起，加桌等行为进行管控。
 
 
@@ -47,5 +48,5 @@
 |QueryStartExperience(const Want &want, const CallerInfo &callerInfo, ExperienceRule &rule)：int32_t|提供给AbilityManagerService使用，在元服务打开时调用。ExperienceRule为返回值，返回是否允许打开；不允许时可以返回具体的体验Want。|
 |QueryFreeInstallExperience(const Want &want, const CallerInfo &callerInfo ExperienceRule &rule)：int32_t|提供给BundleManagerService使用，在元服务免安装时调用。用于判断是否允许免安装，不允许时可以返回具体的体验Want。|
 |IsSupportPublishForm(const vector<AAFwk::Want> &wants, const CallerInfo &callerInfo, bool &bSupport)：int32_t|提供给FormManagerService使用，在卡片加桌时调用。用于判断是否允许加桌|
-|EvaluateResolveInfos(const Want &want, const CallerInfo &callerInfo, int32_t type,std::vector<AbilityInfo> &abilityInfos)：int32_t|提供给AbilityManagerService使用，根据垂类类型type对abilityInfos进行黑名单剔除，返回剔除后的列表|
+|EvaluateResolveInfos(const Want &want, const CallerInfo &callerInfo, int32_t type,std::vector<AbilityInfo> &abilityInfos)：int32_t|提供给AbilityManagerService使用，支持过滤掉禁止出现的提供者|
 
