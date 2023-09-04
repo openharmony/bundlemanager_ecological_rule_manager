@@ -1,6 +1,6 @@
 # bundlemanager_ecological_rule_manager
 
-###Introduction
+### Introduction
 The ecological rule manager service provides a system extension capability, where device manufacturers can control the behavior of applications (such as jumping, adding desktop cards, and installing atomic services) on customized devices (such as 2B cooperation projects), thereby customizing user experiences that meet the manufacturer's control requirements.
 
 ### Software Architecture
@@ -34,7 +34,7 @@ In the root directory of the OpenHarmony source code, invoke the following comma
 ```shell
 ./build.sh --product-name rk3568 --ccache --build-target ecological_rule_mgr
 ```
-> **Note: **
+> **Note:**
 --product-name: product name, for example, Hi3516D V300 or rk3568.
 --ccache: The cache function is used during compilation.
 --build-target: name of the compiled component.
