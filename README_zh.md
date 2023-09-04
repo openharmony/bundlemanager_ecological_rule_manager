@@ -13,7 +13,7 @@
 - `AbilityManagerService`：元能力管理服务，用于协调各Ability运行关系、及对生命周期进行调度的系统服务。 
 - `FormManagerService`：卡片管理服务，管理卡片的生命周期，并维护卡片信息以及卡片事件的调度。
 - `BundleManagerService`：包管理服务，负责应用安装包的管理，提供安装包的信息查询、安装、更新、卸载和包信息存储等能力。
-- `EcologicalRuleManagerServie`：生态规则管控服务，对元服务的拉起，加桌等行为进行管控。
+- `EcologicalRuleManagerService`：生态规则管控服务，对元服务的拉起，加桌等行为进行管控。
 
 
 ### 目录结构
