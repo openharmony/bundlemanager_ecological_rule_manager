@@ -27,28 +27,21 @@
         "ability_manager",
         "aafwk_standard",
         "appexecfwk_standard",
-        "ans_standard",
         "bundle_framework",
         "c_utils",
         "common_event_service",
-        "distributeddatamgr",
         "eventhandler",
         "hilog",
         "ipc",
-        "napi",
         "permission_standard",
-        "relational_store",
         "safwk",
         "samgr",
         "samgr_standard",
-        "startup_l2",
         "utils_base",
         "access_token"
       ],
       "third_party": [
-        "jsoncpp",
-        "openssl",
-        "libuv"
+        "jsoncpp"
       ]
     },
     "build": {
