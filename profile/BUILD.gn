@@ -16,5 +16,5 @@ import("//build/ohos/sa_profile/sa_profile.gni")
 
 ohos_sa_profile("ecologicalrulemgrservice_sa_profiles") {
   sources = [ "6105.json" ]
-  part_name = "ecological_rule_mgr"
+  part_name = "ecological_rule_manager"
 }

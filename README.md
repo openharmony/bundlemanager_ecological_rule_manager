@@ -30,9 +30,9 @@ The following describes the key fields in the preceding figure:
 ```
 ### build
 
-In the root directory of the OpenHarmony source code, invoke the following command to compile ecological_rule_mgr:
+In the root directory of the OpenHarmony source code, invoke the following command to compile ecological_rule_manager:
 ```shell
-./build.sh --product-name rk3568 --ccache --build-target ecological_rule_mgr
+./build.sh --product-name rk3568 --ccache --build-target ecological_rule_manager
 ```
 > **Note:**
 --product-name: product name, for example, Hi3516D V300 or rk3568.

@@ -10,7 +10,7 @@
   "dirs": {},
   "scripts": {},
   "component": {
-    "name": "ecological_rule_mgr",
+    "name": "ecological_rule_manager",
     "subsystem": "bundlemanager",
     "syscap": [ "SystemCapability.BundleManager.EcologicalRuleManager"],
     "features": [
