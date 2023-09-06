@@ -32,5 +32,5 @@ ohos_source_set("ecologicalrulemgrservice_utils") {
     "hilog:libhilog",
   ]
 
-  part_name = "ecological_rule_mgr"
+  part_name = "ecological_rule_manager"
 }

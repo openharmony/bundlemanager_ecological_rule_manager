@@ -32,9 +32,9 @@
 ```
 ### 编译构建
 
-在OpenHarmony源码根目录下，调用以下指令，单独编译ecological_rule_mgr。
+在OpenHarmony源码根目录下，调用以下指令，单独编译ecological_rule_manager。
 ```shell
-./build.sh --product-name rk3568 --ccache --build-target ecological_rule_mgr
+./build.sh --product-name rk3568 --ccache --build-target ecological_rule_manager
 ```
 > **说明：**
 --product-name：产品名称，例如Hi3516DV300、rk3568等。

@@ -71,7 +71,7 @@ ohos_shared_library("ecologicalrulemgr_service") {
     "access_token:libaccesstoken_sdk",
     "access_token:libtokenid_sdk",
   ]
-  part_name = "ecological_rule_mgr"
+  part_name = "ecological_rule_manager"
   subsystem_name = "bundlemanager"
   use_exceptions = true
 }
