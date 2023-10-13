@@ -11,9 +11,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import("//build/test.gni")
-import("//foundation/bundlemanager/ecological_rule_mgr/ecologicalrulemgrservice.gni")
+import("//foundation/bundlemanager/ecological_rule_manager/ecologicalrulemgrservice.gni")
 
-module_output_path = "ecological_rule_mgr/clientTest"
+module_output_path = "ecological_rule_manager/clientTest"
 
 config("module_private_config") {
   visibility = [ ":*" ]

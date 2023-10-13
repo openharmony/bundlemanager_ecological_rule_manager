@@ -20,7 +20,7 @@ aafwk_inner_api_path ="//foundation/ability/ability_runtime/interfaces/inner_api
 
 aafwk_kits_path = "//foundation/ability/ability_runtime/frameworks/kits"
 
-ecologicalrulemgrservice_root_path = "//foundation/bundlemanager/ecological_rule_mgr"
+ecologicalrulemgrservice_root_path = "//foundation/bundlemanager/ecological_rule_manager"
 
 innerkits_path = "${ecologicalrulemgrservice_root_path}/interfaces/innerkits"
 
