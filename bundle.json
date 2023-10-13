@@ -1,5 +1,5 @@
 {
-  "name": "@ohos/ecologicalRuleMgrService",
+  "name": "@ohos/ecological_rule_manager",
   "description": "Ecological rule manager service",
   "version": "3.1",
   "license": "Apache License 2.0",
