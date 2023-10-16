@@ -10,8 +10,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-import("//foundation/bundlemanager/ecological_rule_manager/ecologicalrulemgrservice.gni")
 import("//build/ohos.gni")
+import(
+    "//foundation/bundlemanager/ecological_rule_manager/ecologicalrulemgrservice.gni")
+
 
 config("ecologicalrulemgrservice_client_config") {
   visibility = [ ":*" ]
@@ -32,22 +34,14 @@ ohos_shared_library("erms_client") {
 
   configs = [ ":ecologicalrulemgrservice_client_config" ]
   public_configs = [ ":ecologicalrulemgrservice_client_config" ]
-  deps = [
-    "//third_party/jsoncpp:jsoncpp",
-  ]
+  deps = [ "//third_party/jsoncpp:jsoncpp" ]
   external_deps = [
     "ability_base:want",
-    "ability_runtime:abilitykit_native",
-    "ability_runtime:runtime",
-    "ability_runtime:wantagent_innerkits",
     "bundle_framework:appexecfwk_base",
-    "bundle_framework:appexecfwk_core",
-    "common_event_service:cesfwk_innerkits",
     "c_utils:utils",
     "eventhandler:libeventhandler",
     "hilog:libhilog",
     "ipc:ipc_core",
-    "safwk:system_ability_fwk",
     "samgr:samgr_proxy",
   ]
   subsystem_name = "bundlemanager"
