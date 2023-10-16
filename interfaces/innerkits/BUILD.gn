@@ -24,14 +24,14 @@ config("ecologicalrulemgrservice_client_config") {
 
 ohos_shared_library("erms_client") {
   sources = [
-    "${innerkits_path}/src/ecological_rule_mgr_service_proxy.cpp",
-    "${innerkits_path}/src/ecological_rule_mgr_service_param.cpp",
     "${innerkits_path}/src/ecological_rule_mgr_service_client.cpp",
+	"${innerkits_path}/src/ecological_rule_mgr_service_param.cpp",
+    "${innerkits_path}/src/ecological_rule_mgr_service_proxy.cpp"
   ]
 
   configs = [ ":ecologicalrulemgrservice_client_config" ]
   public_configs = [ ":ecologicalrulemgrservice_client_config" ]
-  deps = [ "//third_party/jsoncpp:jsoncpp" ]
+  deps = []
   external_deps = [
     "ability_base:want",
     "bundle_framework:appexecfwk_base",
