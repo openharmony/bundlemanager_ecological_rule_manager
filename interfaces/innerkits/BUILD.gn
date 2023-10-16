@@ -11,8 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import("//build/ohos.gni")
-import(
-    "//foundation/bundlemanager/ecological_rule_manager/ecologicalrulemgrservice.gni")
+import("../../../ecologicalrulemgrservice.gni")
 
 
 config("ecologicalrulemgrservice_client_config") {
@@ -20,8 +19,7 @@ config("ecologicalrulemgrservice_client_config") {
   include_dirs = [
     "include",
     "${ecologicalrulemgrservice_path}/manager/include",
-    "${ecologicalrulemgrservice_utils_path}/include",
-    "//utils/native/base/include",
+    "${ecologicalrulemgrservice_utils_path}/include"
   ]
 }
 

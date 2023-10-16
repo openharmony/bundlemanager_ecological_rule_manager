@@ -23,7 +23,6 @@ config("ecologicalrulemgrservice_config") {
     "${innerkits_path}/include",
     "//utils/system/safwk/native/include",
     "//third_party/json/include",
-    "//base/hiviewdfx/hilog/interfaces/native/innerkits/include",
     "//foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_core/include",
     "//foundation/systemabilitymgr/samgr/interfaces/innerkits/samgr_proxy/include",
     "//foundation/communication/ipc/interfaces/innerkits/ipc_core/include",
