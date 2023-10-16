@@ -11,8 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 import("//build/test.gni")
-import(
-    "//foundation/bundlemanager/ecological_rule_manager/ecologicalrulemgrservice.gni")
+import("../../ecologicalrulemgrservice.gni")
 
 module_output_path = "ecological_rule_manager/clientTest"
 
