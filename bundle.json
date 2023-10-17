@@ -1,11 +1,11 @@
 {
-  "name": "@ohos/ecologicalRuleMgrService",
+  "name": "@ohos/ecological_rule_manager",
   "description": "Ecological rule manager service",
   "version": "3.1",
   "license": "Apache License 2.0",
   "publishAs": "code-segment",
   "segment": {
-    "destPath": "foundation/bundlemanager/ecological_rule_mgr"
+    "destPath": "foundation/bundlemanager/ecological_rule_manager"
   },
   "dirs": {},
   "scripts": {},
@@ -46,31 +46,31 @@
     },
     "build": {
       "sub_component": [
-        "//foundation/bundlemanager/ecological_rule_mgr:ecological_rule_mgr_packages"
+        "//foundation/bundlemanager/ecological_rule_manager:ecological_rule_mgr_packages"
       ],
       "inner_kits": [
         {
-          "name": "//foundation/bundlemanager/ecological_rule_mgr/services:ecologicalrulemgr_service",
+          "name": "//foundation/bundlemanager/ecological_rule_manager/services:ecologicalrulemgr_service",
           "header": {
             "header_files": [
               "ecological_rule_mgr_service_interface.h"
             ],
-            "header_base":"//foundation/bundlemanager/ecological_rule_mgr/interfaces/innerkits/include"
+            "header_base":"//foundation/bundlemanager/ecological_rule_manager/interfaces/innerkits/include"
           }
         },
         {
-          "name": "//foundation/bundlemanager/ecological_rule_mgr/interfaces/innerkits:erms_client",
+          "name": "//foundation/bundlemanager/ecological_rule_manager/interfaces/innerkits:erms_client",
           "header": {
             "header_files": [
               "ecological_rule_mgr_service_interface.h",
               "ecological_rule_mgr_service_param.h"
             ],
-            "header_base":"//foundation/bundlemanager/ecological_rule_mgr/interfaces/innerkits/include"
+            "header_base":"//foundation/bundlemanager/ecological_rule_manager/interfaces/innerkits/include"
           }
         }
       ],
       "test": [
-        "//foundation/bundlemanager/ecological_rule_mgr/test/unittest:unittest"
+        "//foundation/bundlemanager/ecological_rule_manager/test/unittest:unittest"
       ]
     }
   }
