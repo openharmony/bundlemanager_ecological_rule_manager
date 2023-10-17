@@ -11,7 +11,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import("//foundation/bundlemanager/ecological_rule_mgr/ecologicalrulemgrservice.gni")
+import("../ecologicalrulemgrservice.gni")
 
 config("ecologicalrulemgrservice_config") {
   visibility = [ ":*" ]
@@ -20,9 +20,7 @@ config("ecologicalrulemgrservice_config") {
     "./manager/include",
     "../utils/include",
     "${innerkits_path}/include",
-    "//utils/system/safwk/native/include",
     "//third_party/json/include",
-    "//base/hiviewdfx/hilog/interfaces/native/innerkits/include",
     "//foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_core/include",
     "//foundation/systemabilitymgr/samgr/interfaces/innerkits/samgr_proxy/include",
     "//foundation/communication/ipc/interfaces/innerkits/ipc_core/include",
@@ -49,9 +47,9 @@ ohos_shared_library("ecologicalrulemgr_service") {
   ]
 
   sources = [
+    "${innerkits_path}/src/ecological_rule_mgr_service_param.cpp",
     "manager/src/ecologic_rule_mgr_service.cpp",
     "manager/src/ecologic_rule_mgr_service_stub.cpp",
-    "${innerkits_path}/src/ecological_rule_mgr_service_param.cpp"
   ]
 
   deps = []
@@ -61,6 +59,8 @@ ohos_shared_library("ecologicalrulemgr_service") {
     "ability_runtime:abilitykit_native",
     "ability_runtime:runtime",
     "ability_runtime:wantagent_innerkits",
+    "access_token:libaccesstoken_sdk",
+    "access_token:libtokenid_sdk",
     "bundle_framework:appexecfwk_base",
     "bundle_framework:appexecfwk_core",
     "c_utils:utils",
@@ -68,8 +68,6 @@ ohos_shared_library("ecologicalrulemgr_service") {
     "ipc:ipc_core",
     "safwk:system_ability_fwk",
     "samgr:samgr_proxy",
-    "access_token:libaccesstoken_sdk",
-    "access_token:libtokenid_sdk",
   ]
   part_name = "ecological_rule_manager"
   subsystem_name = "bundlemanager"
