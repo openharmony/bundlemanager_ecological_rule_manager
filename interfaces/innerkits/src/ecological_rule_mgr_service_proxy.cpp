@@ -96,9 +96,6 @@ int32_t EcologicalRuleMgrServiceProxy::EvaluateResolveInfos(const Want &want, co
         LOG_ERROR("SendRequest error, ret = %{public}d", ret);
         return ERR_FAILED;
     }
-    if (!ReadParcelableVector(abilityInfos, reply)) {
-        LOG_ERROR("GetParcelableInfos fail");
-    }
     LOG_INFO("EvaluateResolveInfos end");
     return ERR_OK;
 }
