@@ -12,7 +12,7 @@
   "component": {
     "name": "ecological_rule_manager",
     "subsystem": "bundlemanager",
-    "syscap": [ "SystemCapability.BundleManager.EcologicalRuleManager"],
+    "syscap": ["SystemCapability.BundleManager.EcologicalRuleManager"],
     "features": [
     ],
     "adapted_system_type": [
