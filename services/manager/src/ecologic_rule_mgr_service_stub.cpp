@@ -26,7 +26,7 @@ namespace EcologicalRuleMgrService {
 #define TAG "ERMS_STUB"
 
 static inline const std::u16string ERMS_INTERFACE_TOKEN =
-    u"ohos.cloud.ecologicalrulemgrservice.EcologicalRuleMgrServiceInterface";
+    u"ohos.cloud.ecologicalrulemgrservice.IEcologicalRuleMgrService";
 
 std::mutex EcologicalRuleMgrServiceStub::bmInstanceLock_;
 EcologicalRuleMgrServiceStub::EcologicalRuleMgrServiceStub()
