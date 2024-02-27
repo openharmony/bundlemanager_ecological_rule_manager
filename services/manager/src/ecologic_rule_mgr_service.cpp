@@ -66,7 +66,7 @@ int32_t EcologicalRuleMgrService::EvaluateResolveInfos(const Want &want, const C
     std::vector<AbilityInfo> &abilityInfos)
 {
     LOG_DEBUG("EvaluateResolveInfos want name = %{public}s, caller name = %{public}s, type = %{public}d, "
-        "abilityInfos size=%{public}lu", want.GetBundle().c_str(), callerInfo.packageName.c_str(), type,
+        "abilityInfos size=%{public}u", want.GetBundle().c_str(), callerInfo.packageName.c_str(), type,
         abilityInfos.size());
     return SUCCESS;
 }
