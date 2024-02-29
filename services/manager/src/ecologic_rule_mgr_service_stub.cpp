@@ -111,6 +111,7 @@ int32_t EcologicalRuleMgrServiceStub::OnEvaluateResolveInfosResult(MessageParcel
         LOG_ERROR("read type failed");
         return ERR_FAILED;
     }
+    LOG_DEBUG("read type = %{public}d", type);
     std::vector<AbilityInfo> abilityInfos = {};
     int32_t abilityInfoSize = 0;
     if (!data.ReadInt32(abilityInfoSize)) {
