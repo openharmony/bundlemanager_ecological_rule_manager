@@ -38,12 +38,23 @@ struct CallerInfo : public Parcelable {
         TYPE_HARMONY_APP,
         TYPE_ATOM_SERVICE
     };
+    enum {
+        LINK_TYPE_INVALID = 0,
+        LINK_TYPE_UNIVERSAL_LINK,
+        LINK_TYPE_DEEP_LINK,
+        LINK_TYPE_WEB_LINK,
+        LINK_TYPE_ABILITY
+    };
     std::string packageName;
     int32_t uid = 0L;
     int32_t pid = 0L;
     int32_t callerAppType = TYPE_INVALID;
     int32_t targetAppType = TYPE_INVALID;
     int32_t callerModeType = 0L;
+    std::string targetAppDistType = "";
+    std::string targetLinkFeature = "";
+    int32_t targetLinkType = LINK_TYPE_INVALID;
+    int32_t callerAbilityType = 0L;
     bool ReadFromParcel(Parcel &parcel);
     bool Marshalling(Parcel &parcel) const override;
     static CallerInfo *Unmarshalling(Parcel &parcel);
