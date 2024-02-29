@@ -47,6 +47,12 @@ bool ExperienceRule::Marshalling(Parcel &parcel) const
     return true;
 }
 
+bool CallerInfo::ReadFromParcel(Parcel &parcel)
+{
+    LOG_INFO("read from parcel");
+    return true;
+}
+
 CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
 {
     auto *info = new (std::nothrow) CallerInfo();
@@ -58,6 +64,12 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
     LOG_INFO("read packageName result: %{public}s", info->packageName.c_str());
     bool res = in.ReadInt32(info->uid) && in.ReadInt32(info->pid) && in.ReadInt32(info->callerAppType) &&
         in.ReadInt32(info->targetAppType);
+    if (!in.ReadInt32(info->callerModeType)) {
+        LOG_DEBUG("read callerModeType failed");
+        info->callerModeType = 0;
+    } else {
+        LOG_DEBUG("read callerModeType is %{public}d", info->callerModeType);
+    }
     if (!res) {
         LOG_ERROR("read callerInfo information failed");
         delete info;
