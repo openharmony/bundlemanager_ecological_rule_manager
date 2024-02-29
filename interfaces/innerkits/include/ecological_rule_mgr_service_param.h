@@ -43,6 +43,8 @@ struct CallerInfo : public Parcelable {
     int32_t pid = 0L;
     int32_t callerAppType = TYPE_INVALID;
     int32_t targetAppType = TYPE_INVALID;
+    int32_t callerModeType = 0L;
+    bool ReadFromParcel(Parcel &parcel);
     bool Marshalling(Parcel &parcel) const override;
     static CallerInfo *Unmarshalling(Parcel &parcel);
     std::string ToString() const;
