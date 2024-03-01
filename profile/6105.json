@@ -1,5 +1,5 @@
 {
-    "process": "ecologicalRuleMgrService",
+    "process": "foundation",
     "systemability": [
         {
             "name": 6105,
@@ -7,22 +7,6 @@
             "run-on-create": true,
             "distributed": false,
             "dump_level": 1,
-            "start-on-demand": {
-                "deviceonline": [
-                    {
-                        "name": "deviceonline",
-                        "value": "on"
-                    }
-                ]
-            },
-            "stop-on-demand": {
-                "deviceonline": [
-                    {
-                        "name": "deviceonline",
-                        "value": "off"
-                    }
-                ]
-            }
         }
     ]
 }
