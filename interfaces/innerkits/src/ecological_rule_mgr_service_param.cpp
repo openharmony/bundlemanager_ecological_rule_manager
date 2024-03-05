@@ -70,6 +70,20 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
     } else {
         LOG_DEBUG("read callerModeType is %{public}d", info->callerModeType);
     }
+    info->targetAppDistType = in.ReadString();
+    info->targetLinkFeature = in.ReadString();
+    if (!in.ReadInt32(info->targetLinkType)) {
+        LOG_DEBUG("read targetLinkType failed");
+        info->targetLinkType = 0;
+    } else {
+        LOG_DEBUG("read targetLinkType is %{public}d", info->targetLinkType);
+    }
+    if (!in.ReadInt32(info->callerAbilityType)) {
+        LOG_DEBUG("read callerAbilityType failed");
+        info->callerAbilityType = 0;
+    } else {
+        LOG_DEBUG("read callerAbilityType is %{public}d", info->callerAbilityType);
+    }
     if (!res) {
         LOG_ERROR("read callerInfo information failed");
         delete info;
@@ -93,7 +107,9 @@ std::string CallerInfo::ToString() const
 {
     std::string str = "CallerInfo{packageName:" + packageName + ",uid:" + std::to_string(uid) +
         ",pid:" + std::to_string(pid) + ",callerAppType:" + std::to_string(callerAppType) +
-        ",targetAppType:" + std::to_string(targetAppType) + "}";
+        ",targetAppType:" + std::to_string(targetAppType) + ",callerModeType:" + std::to_string(callerModeType) +
+        ",targetAppDistType:" + targetAppDistType + ",targetLinkFeature:" + targetLinkFeature + ",targetLinkType:" +
+        std::to_string(targetLinkType) + ",callerAbilityType:" + std::to_string(callerAbilityType) + "}";
     return str;
 }
 } // namespace EcologicalRuleMgrService
