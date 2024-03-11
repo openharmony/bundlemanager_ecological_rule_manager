@@ -41,6 +41,7 @@ ohos_shared_library("erms_client") {
     "ipc:ipc_core",
     "samgr:samgr_proxy",
   ]
+  innerapi_tags = [ "platformsdk" ]
   subsystem_name = "bundlemanager"
   part_name = "ecological_rule_manager"
 }
