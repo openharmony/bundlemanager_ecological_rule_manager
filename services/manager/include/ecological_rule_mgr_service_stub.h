@@ -69,6 +69,7 @@ private:
     std::map<uint32_t, EcologicalRuleManagerServiceFuncs> memberFuncMap_;
 
     const int32_t MAX_WANT_SIZE = 15;
+    const int32_t MAX_ABILITY_INFO_SIZE = 1000;
 
     bool VerifySystemApp();
 };
