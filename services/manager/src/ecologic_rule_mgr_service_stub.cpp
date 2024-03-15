@@ -118,7 +118,11 @@ int32_t EcologicalRuleMgrServiceStub::OnEvaluateResolveInfosResult(MessageParcel
         LOG_ERROR("read abilityInfoSize failed");
         return ERR_FAILED;
     }
-    LOG_DEBUG("read abilityInfos size = %{public}d", abilityInfoSize);
+    if (abilityInfoSize > MAX_ABILITY_INFO_SIZE) {
+        LOG_ERROR("abilityInfoSize exceed the maximum limit, abilityInfoSize = %{public}d, limit = %{public}d",
+            abilityInfoSize, MAX_ABILITY_INFO_SIZE);
+        return ERR_FAILED;
+    }
     for (int32_t i = 0; i < abilityInfoSize; i++) {
         sptr<AbilityInfo> abilityInfo = data.ReadParcelable<AbilityInfo>();
         if (abilityInfo == nullptr) {
