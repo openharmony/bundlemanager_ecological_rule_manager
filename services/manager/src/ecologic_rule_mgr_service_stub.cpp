@@ -131,9 +131,10 @@ int32_t EcologicalRuleMgrServiceStub::OnEvaluateResolveInfosResult(MessageParcel
         }
         abilityInfos.emplace_back(*abilityInfo);
     }
-    LOG_DEBUG("before process abilityInfos size= %{public}lu", abilityInfos.size());
+    int32_t infoSize = static_cast<int32_t>(abilityInfos.size());
+    LOG_DEBUG("before process abilityInfos size= %{public}lu", infoSize);
     EvaluateResolveInfos(*want, *caller, type, abilityInfos);
-    LOG_DEBUG("after process abilityInfos size= %{public}lu", abilityInfos.size());
+    LOG_DEBUG("after process abilityInfos size= %{public}lu", infoSize);
     if (!WriteParcelableVector(abilityInfos, reply)) {
         LOG_ERROR("WriteParcelableVector failed");
         return ERR_FAILED;
