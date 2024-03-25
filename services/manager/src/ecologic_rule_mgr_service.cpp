@@ -65,9 +65,8 @@ int32_t EcologicalRuleMgrService::QueryFreeInstallExperience(const Want &want, c
 int32_t EcologicalRuleMgrService::EvaluateResolveInfos(const Want &want, const CallerInfo &callerInfo, int32_t type,
     std::vector<AbilityInfo> &abilityInfos)
 {
-    LOG_DEBUG("EvaluateResolveInfos want name = %{public}s, caller name = %{public}s, type = %{public}d, "
-        "abilityInfos size=%{public}u", want.GetBundle().c_str(), callerInfo.packageName.c_str(), type,
-        abilityInfos.size());
+    LOG_DEBUG("EvaluateResolveInfos want name = %{public}s, caller name = %{public}s, type = %{public}d",
+        want.GetBundle().c_str(), callerInfo.packageName.c_str(), type);
     return SUCCESS;
 }
 
