@@ -100,12 +100,6 @@ int32_t EcologicalRuleMgrServiceStub::OnEvaluateResolveInfosResult(MessageParcel
         return ERR_FAILED;
     }
 
-    sptr<CallerInfo> caller = data.ReadParcelable<CallerInfo>();
-    if (caller == nullptr) {
-        LOG_ERROR("read caller failed");
-        return ERR_FAILED;
-    }
-
     int32_t type = 0;
     if (!data.ReadInt32(type)) {
         LOG_ERROR("read type failed");
@@ -133,8 +127,13 @@ int32_t EcologicalRuleMgrServiceStub::OnEvaluateResolveInfosResult(MessageParcel
     }
     int32_t infoSize = static_cast<int32_t>(abilityInfos.size());
     LOG_DEBUG("before process abilityInfos size= %{public}d", infoSize);
+
+    sptr<CallerInfo> caller = data.ReadParcelable<CallerInfo>();
+    if (caller == nullptr) {
+        LOG_ERROR("read caller failed");
+        return ERR_FAILED;
+    }
     EvaluateResolveInfos(*want, *caller, type, abilityInfos);
-    LOG_DEBUG("after process abilityInfos size= %{public}d", infoSize);
     if (!WriteParcelableVector(abilityInfos, reply)) {
         LOG_ERROR("WriteParcelableVector failed");
         return ERR_FAILED;
