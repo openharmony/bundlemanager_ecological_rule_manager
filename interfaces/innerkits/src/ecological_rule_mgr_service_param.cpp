@@ -84,6 +84,14 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
     } else {
         LOG_DEBUG("read callerAbilityType is %{public}d", info->callerAbilityType);
     }
+    if (!in.ReadInt32(info->embedded)) {
+        LOG_DEBUG("read embedded failed");
+        info->embedded = 0;
+    } else {
+        LOG_DEBUG("read embedded is %{public}d", info->embedded);
+    }
+    info->callerAppProvisionType = in.ReadString();
+    info->targetAppProvisionType = in.ReadString();
     if (!res) {
         LOG_ERROR("read callerInfo information failed");
         delete info;
@@ -109,7 +117,9 @@ std::string CallerInfo::ToString() const
         ",pid:" + std::to_string(pid) + ",callerAppType:" + std::to_string(callerAppType) +
         ",targetAppType:" + std::to_string(targetAppType) + ",callerModeType:" + std::to_string(callerModeType) +
         ",targetAppDistType:" + targetAppDistType + ",targetLinkFeature:" + targetLinkFeature + ",targetLinkType:" +
-        std::to_string(targetLinkType) + ",callerAbilityType:" + std::to_string(callerAbilityType) + "}";
+        std::to_string(targetLinkType) + ",callerAbilityType:" + std::to_string(callerAbilityType) +
+        ",embedded:" + std::to_string(embedded) + ",callerAppProvisionType:" + callerAppProvisionType +
+        ",targetAppProvisionType:" + targetAppProvisionType + "}";
     return str;
 }
 } // namespace EcologicalRuleMgrService

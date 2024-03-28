@@ -55,6 +55,9 @@ struct CallerInfo : public Parcelable {
     std::string targetLinkFeature = "";
     int32_t targetLinkType = LINK_TYPE_INVALID;
     int32_t callerAbilityType = 0L;
+    int32_t embedded = 0L;
+    std::string callerAppProvisionType;
+    std::string targetAppProvisionType;
     bool ReadFromParcel(Parcel &parcel);
     bool Marshalling(Parcel &parcel) const override;
     static CallerInfo *Unmarshalling(Parcel &parcel);
