@@ -20,20 +20,13 @@ config("ecologicalrulemgrservice_config") {
     "./manager/include",
     "../utils/include",
     "${innerkits_path}/include",
-    "//third_party/json/include",
-    "//foundation/bundlemanager/bundle_framework/interfaces/inner_api/appexecfwk_core/include",
-    "//foundation/systemabilitymgr/samgr/interfaces/innerkits/samgr_proxy/include",
-    "//foundation/communication/ipc/interfaces/innerkits/ipc_core/include",
   ]
 }
 
 ohos_shared_library("ecologicalrulemgr_service") {
   configs = [ "${ecologicalrulemgrservice_utils_path}:utils_config" ]
 
-  public_configs = [
-    "//commonlibrary/c_utils/base:utils_config",
-    ":ecologicalrulemgrservice_config",
-  ]
+  public_configs = [ ":ecologicalrulemgrservice_config" ]
 
   cflags = [
     "-fvisibility=hidden",
@@ -64,9 +57,16 @@ ohos_shared_library("ecologicalrulemgr_service") {
     "bundle_framework:appexecfwk_base",
     "bundle_framework:appexecfwk_core",
     "c_utils:utils",
+    "c_utils:utilsbase",
     "hilog:libhilog",
     "ipc:ipc_core",
     "safwk:system_ability_fwk",
+    "samgr:samgr_proxy",
+  ]
+  public_external_deps = [
+    "bundle_framework:appexecfwk_core",
+    "ipc:ipc_core",
+    "json:nlohmann_json_static",
     "samgr:samgr_proxy",
   ]
   part_name = "ecological_rule_manager"
