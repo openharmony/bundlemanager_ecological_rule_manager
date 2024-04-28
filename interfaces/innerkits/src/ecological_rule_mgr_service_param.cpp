@@ -78,11 +78,9 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
     } else {
         LOG_DEBUG("read targetLinkType is %{public}d", info->targetLinkType);
     }
-    if (!in.ReadInt32(info->callerAbilityType)) {
-        LOG_DEBUG("read callerAbilityType failed");
-        info->callerAbilityType = 0;
-    } else {
-        LOG_DEBUG("read callerAbilityType is %{public}d", info->callerAbilityType);
+    int callerAbilityType = 0;
+    if (in.ReadInt32(callerAbilityType)) {
+        info->callerAbilityType = static_cast<AppExecFwk::AbilityType>(callerAbilityType);
     }
     if (!in.ReadInt32(info->embedded)) {
         LOG_DEBUG("read embedded failed");
@@ -92,6 +90,10 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
     }
     info->callerAppProvisionType = in.ReadString();
     info->targetAppProvisionType = in.ReadString();
+    int32_t callerExtensionAbilityType = 0;
+    if (in.ReadInt32(callerExtensionAbilityType)) {
+        info->callerExtensionAbilityType = static_cast<AppExecFwk::ExtensionAbilityType>(callerExtensionAbilityType);
+    }
     if (!res) {
         LOG_ERROR("read callerInfo information failed");
         delete info;
@@ -117,8 +119,10 @@ std::string CallerInfo::ToString() const
         ",pid:" + std::to_string(pid) + ",callerAppType:" + std::to_string(callerAppType) +
         ",targetAppType:" + std::to_string(targetAppType) + ",callerModeType:" + std::to_string(callerModeType) +
         ",targetAppDistType:" + targetAppDistType + ",targetLinkFeature:" + targetLinkFeature + ",targetLinkType:" +
-        std::to_string(targetLinkType) + ",callerAbilityType:" + std::to_string(callerAbilityType) +
-        ",embedded:" + std::to_string(embedded) + ",callerAppProvisionType:" + callerAppProvisionType +
+        std::to_string(targetLinkType) + ",callerAbilityType:" +
+        std::to_string(static_cast<int32_t>(callerAbilityType)) + ",callerExtensionAbilityType:" +
+        std::to_string(static_cast<int32_t>(callerExtensionAbilityType)) + ",embedded:" +
+        std::to_string(embedded) + ",callerAppProvisionType:" + callerAppProvisionType +
         ",targetAppProvisionType:" + targetAppProvisionType + "}";
     return str;
 }
