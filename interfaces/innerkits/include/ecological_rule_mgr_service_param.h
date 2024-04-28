@@ -18,6 +18,7 @@
 
 #include <string>
 #include <vector>
+#include "ability_info.h"
 #include "parcel.h"
 #include "want.h"
 
@@ -54,10 +55,11 @@ struct CallerInfo : public Parcelable {
     std::string targetAppDistType = "";
     std::string targetLinkFeature = "";
     int32_t targetLinkType = LINK_TYPE_INVALID;
-    int32_t callerAbilityType = 0L;
+    AppExecFwk::AbilityType callerAbilityType = AppExecFwk::AbilityType::UNKNOWN;
     int32_t embedded = 0L;
     std::string callerAppProvisionType;
     std::string targetAppProvisionType;
+    AppExecFwk::ExtensionAbilityType callerExtensionAbilityType = AppExecFwk::ExtensionAbilityType::UNSPECIFIED;
     bool ReadFromParcel(Parcel &parcel);
     bool Marshalling(Parcel &parcel) const override;
     static CallerInfo *Unmarshalling(Parcel &parcel);
