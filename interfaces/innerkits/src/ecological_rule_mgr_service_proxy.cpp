@@ -21,7 +21,7 @@ namespace OHOS {
 namespace EcologicalRuleMgrService {
 #define TAG "erms_proxy"
 static inline const std::u16string ERMS_INTERFACE_TOKEN =
-    u"ohos.cloud.ecologicalrulemgrservice.EcologicalRuleMgrServiceInterface";
+    u"ohos.cloud.ecologicalrulemgrservice.IEcologicalRuleMgrService";
 
 EcologicalRuleMgrServiceProxy::EcologicalRuleMgrServiceProxy(const sptr<IRemoteObject> &object)
     : IRemoteProxy<EcologicalRuleMgrServiceInterface>(object)
@@ -72,7 +72,7 @@ int32_t EcologicalRuleMgrServiceProxy::EvaluateResolveInfos(const Want &want, co
         LOG_ERROR("write token failed");
         return ERR_FAILED;
     }
-    bool res = data.WriteParcelable(&want) && data.WriteParcelable(&callerInfo) && data.WriteInt32(type) &&
+    bool res = data.WriteParcelable(&want) && data.WriteInt32(type) &&
         data.WriteInt32(abilityInfos.size());
     if (!res) {
         LOG_ERROR("write data failed");
@@ -83,6 +83,10 @@ int32_t EcologicalRuleMgrServiceProxy::EvaluateResolveInfos(const Want &want, co
             LOG_ERROR("write abilityInfo failed");
             return ERR_FAILED;
         }
+    }
+    if (!data.WriteParcelable(&callerInfo)) {
+        LOG_ERROR("write callerInfo failed");
+        return ERR_FAILED;
     }
     MessageOption option = { MessageOption::TF_SYNC };
     MessageParcel reply;
