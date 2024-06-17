@@ -228,14 +228,13 @@ bool EcologicalRuleMgrServiceStub::VerifySystemApp()
         LOG_INFO("caller tokenType is native, verify success");
         return true;
     }
+    if (callingUid != ERMS_FOUNDATION_UID) {
+        LOG_ERROR("calling permission denied, callingUid:%{public}d, not foundation", callingUid);
+        return false;
+    }
     uint64_t accessTokenIdEx = IPCSkeleton::GetCallingFullTokenID();
     if (!Security::AccessToken::TokenIdKit::IsSystemAppByFullTokenID(accessTokenIdEx)) {
         LOG_INFO("non-system app calling system api");
-        return false;
-    }
-    int32_t uid = OHOS::IPCSkeleton::GetCallingUid();
-    if (uid != ERMS_FOUNDATION_UID) {
-        LOG_ERROR("calling permission denied, uid:%{public}d, not foundation", uid);
         return false;
     }
     return true;
