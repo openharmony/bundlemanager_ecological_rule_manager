@@ -24,6 +24,7 @@
 namespace OHOS {
 namespace EcologicalRuleMgrService {
 #define TAG "ERMS_STUB"
+#define ERMS_FOUNDATION_UID 5523
 
 static inline const std::u16string ERMS_INTERFACE_TOKEN =
     u"ohos.cloud.ecologicalrulemgrservice.IEcologicalRuleMgrService";
@@ -230,6 +231,11 @@ bool EcologicalRuleMgrServiceStub::VerifySystemApp()
     uint64_t accessTokenIdEx = IPCSkeleton::GetCallingFullTokenID();
     if (!Security::AccessToken::TokenIdKit::IsSystemAppByFullTokenID(accessTokenIdEx)) {
         LOG_INFO("non-system app calling system api");
+        return false;
+    }
+    int32_t uid = OHOS::IPCSkeleton::GetCallingUid();
+    if (uid != ERMS_FOUNDATION_UID) {
+        LOG_ERROR("calling permission denied, uid:%{public}d, not foundation", uid);
         return false;
     }
     return true;
