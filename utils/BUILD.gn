@@ -26,5 +26,7 @@ ohos_source_set("ecologicalrulemgrservice_utils") {
 
   external_deps = [ "hilog:libhilog" ]
 
+  subsystem_name = "bundlemanager"
+
   part_name = "ecological_rule_manager"
 }
