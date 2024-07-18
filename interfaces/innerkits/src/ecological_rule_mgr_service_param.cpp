@@ -128,8 +128,8 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
     if (in.ReadInt32(callerExtensionAbilityType)) {
         info->callerExtensionAbilityType = static_cast<AppExecFwk::ExtensionAbilityType>(callerExtensionAbilityType);
     }
-    info->targetAbilityType = static_cast<AppExecFwk::AbilityType>(in.readInt32());
-    info->targetExtensionAbilityType = static_cast<AppExecFwk::ExtensionAbilityType>(in.readInt32());
+    info->targetAbilityType = static_cast<AppExecFwk::AbilityType>(in.ReadInt32());
+    info->targetExtensionAbilityType = static_cast<AppExecFwk::ExtensionAbilityType>(in.ReadInt32());
     if (!res) {
         LOG_ERROR("read callerInfo information failed");
         delete info;
