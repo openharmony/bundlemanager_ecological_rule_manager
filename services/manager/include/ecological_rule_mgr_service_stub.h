@@ -62,6 +62,9 @@ private:
     int32_t OnQueryStartExperienceResult(MessageParcel &data, MessageParcel &reply);
     int32_t OnIsSupportPublishFormResult(MessageParcel &data, MessageParcel &reply);
 
+    void TransAmsExperienceRule(ExperienceRule &rule, AmsExperienceRule &amsRule);
+    void TransBmsExperienceRule(ExperienceRule &rule, BmsExperienceRule &bmsRule);
+
     bool EnforceInterceToken(MessageParcel &data);
     template <typename T> bool WriteParcelableVector(const std::vector<T> &parcelableVector, MessageParcel &reply);
 
