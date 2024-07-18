@@ -28,9 +28,24 @@ using Want = OHOS::AAFwk::Want;
 
 struct ExperienceRule : public Parcelable {
     bool isAllow = true;
+    int32_t resultCode = -1;
     sptr<Want> replaceWant = nullptr;
     bool Marshalling(Parcel &parcel) const override;
     static ExperienceRule *Unmarshalling(Parcel &parcel);
+};
+
+struct AmsExperienceRule : public Parcelable {
+    int32_t resultCode = -1;
+    sptr<Want> replaceWant = nullptr;
+    bool Marshalling(Parcel &parcel) const override;
+    static AmsExperienceRule *Unmarshalling(Parcel &parcel);
+};
+
+struct BmsExperienceRule : public Parcelable {
+    bool isAllow = true;
+    sptr<Want> replaceWant = nullptr;
+    bool Marshalling(Parcel &parcel) const override;
+    static BmsExperienceRule *Unmarshalling(Parcel &parcel);
 };
 
 struct CallerInfo : public Parcelable {
@@ -60,6 +75,8 @@ struct CallerInfo : public Parcelable {
     std::string callerAppProvisionType;
     std::string targetAppProvisionType;
     AppExecFwk::ExtensionAbilityType callerExtensionAbilityType = AppExecFwk::ExtensionAbilityType::UNSPECIFIED;
+    AppExecFwk::AbilityType targetAbilityType = AppExecFwk::AbilityType::UNKNOWN;
+    AppExecFwk::ExtensionAbilityType targetExtensionAbilityType = AppExecFwk::ExtensionAbilityType::UNSPECIFIED;
     bool ReadFromParcel(Parcel &parcel);
     bool Marshalling(Parcel &parcel) const override;
     static CallerInfo *Unmarshalling(Parcel &parcel);
