@@ -159,7 +159,7 @@ std::string CallerInfo::ToString() const
         std::to_string(static_cast<int32_t>(callerAbilityType)) + ",callerExtensionAbilityType:" +
         std::to_string(static_cast<int32_t>(callerExtensionAbilityType)) + ",embedded:" +
         std::to_string(embedded) + ",callerAppProvisionType:" + callerAppProvisionType +
-        ",targetAppProvisionType:" + targetAppProvisionType + ",targetAbilityType:" + 
+        ",targetAppProvisionType:" + targetAppProvisionType + ",targetAbilityType:" +
         std::to_string(static_cast<int32_t>(targetAbilityType)) + ",targetExtensionAbilityType:" +
         std::to_string(static_cast<int32_t>(targetExtensionAbilityType)) + "}";
     return str;
