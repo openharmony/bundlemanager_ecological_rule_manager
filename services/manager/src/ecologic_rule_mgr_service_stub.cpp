@@ -82,8 +82,10 @@ int32_t EcologicalRuleMgrServiceStub::OnQueryFreeInstallExperienceResult(Message
     }
     sptr<ExperienceRule> rule = new ExperienceRule();
     QueryFreeInstallExperience(*want, *caller, *rule);
-    if (!reply.WriteParcelable(rule)) {
-        LOG_ERROR("write rule failed");
+    sptr<BmsExperienceRule> bmsExpRule = new BmsExperienceRule();
+    TransBmsExperienceRule(*rule, *bmsExpRule);
+    if (!reply.WriteParcelable(bmsExpRule)) {
+        LOG_ERROR("write bmsExpRule failed");
         return ERR_FAILED;
     }
     return ERR_OK;
@@ -142,6 +144,18 @@ int32_t EcologicalRuleMgrServiceStub::OnEvaluateResolveInfosResult(MessageParcel
     return ERR_OK;
 }
 
+void EcologicalRuleMgrServiceStub::TransAmsExperienceRule(ExperienceRule &rule, AmsExperienceRule &amsRule)
+{
+    amsRule.resultCode = 10; // 10 is default value
+    amsRule.replaceWant = rule.replaceWant;
+}
+
+void EcologicalRuleMgrServiceStub::TransBmsExperienceRule(ExperienceRule &rule, BmsExperienceRule &bmsRule)
+{
+    bmsRule.isAllow = rule.isAllow;
+    bmsRule.replaceWant = rule.replaceWant;
+}
+
 int32_t EcologicalRuleMgrServiceStub::OnQueryStartExperienceResult(MessageParcel &data, MessageParcel &reply)
 {
     if (!VerifySystemApp()) {
@@ -160,8 +174,10 @@ int32_t EcologicalRuleMgrServiceStub::OnQueryStartExperienceResult(MessageParcel
     }
     sptr<ExperienceRule> rule = new ExperienceRule();
     QueryStartExperience(*want, *caller, *rule);
-    if (!reply.WriteParcelable(rule)) {
-        LOG_ERROR("write rule failed");
+    sptr<AmsExperienceRule> amsExpRule = new AmsExperienceRule();
+    TransAmsExperienceRule(*rule, *amsExpRule);
+    if (!reply.WriteParcelable(amsExpRule)) {
+        LOG_ERROR("write amsExpRule failed");
         return ERR_FAILED;
     }
     return ERR_OK;

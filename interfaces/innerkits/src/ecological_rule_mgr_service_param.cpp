@@ -25,7 +25,41 @@ namespace EcologicalRuleMgrService {
 
 ExperienceRule *ExperienceRule::Unmarshalling(Parcel &in)
 {
-    auto *rule = new (std::nothrow) ExperienceRule();
+    return nullptr;
+}
+
+bool ExperienceRule::Marshalling(Parcel &parcel) const
+{
+    return true;
+}
+
+AmsExperienceRule *AmsExperienceRule::Unmarshalling(Parcel &in)
+{
+    auto *rule = new (std::nothrow) AmsExperienceRule();
+    if (rule == nullptr) {
+        return nullptr;
+    }
+    if (!in.ReadInt32(rule->resultCode)) {
+        delete rule;
+        return nullptr;
+    }
+    rule->replaceWant = in.ReadParcelable<Want>();
+    return rule;
+}
+
+bool AmsExperienceRule::Marshalling(Parcel &parcel) const
+{
+    bool res = parcel.WriteInt32(resultCode) && parcel.WriteParcelable(replaceWant);
+    if (!res) {
+        LOG_ERROR("AmsExperienceRule Marshalling failed");
+        return false;
+    }
+    return true;
+}
+
+BmsExperienceRule *BmsExperienceRule::Unmarshalling(Parcel &in)
+{
+    auto *rule = new (std::nothrow) BmsExperienceRule();
     if (rule == nullptr) {
         return nullptr;
     }
@@ -37,11 +71,11 @@ ExperienceRule *ExperienceRule::Unmarshalling(Parcel &in)
     return rule;
 }
 
-bool ExperienceRule::Marshalling(Parcel &parcel) const
+bool BmsExperienceRule::Marshalling(Parcel &parcel) const
 {
     bool res = parcel.WriteBool(isAllow) && parcel.WriteParcelable(replaceWant);
     if (!res) {
-        LOG_ERROR("ExperienceRule Marshalling failed");
+        LOG_ERROR("BmsExperienceRule Marshalling failed");
         return false;
     }
     return true;
@@ -94,6 +128,8 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
     if (in.ReadInt32(callerExtensionAbilityType)) {
         info->callerExtensionAbilityType = static_cast<AppExecFwk::ExtensionAbilityType>(callerExtensionAbilityType);
     }
+    info->targetAbilityType = static_cast<AppExecFwk::AbilityType>(in.ReadInt32());
+    info->targetExtensionAbilityType = static_cast<AppExecFwk::ExtensionAbilityType>(in.ReadInt32());
     if (!res) {
         LOG_ERROR("read callerInfo information failed");
         delete info;
@@ -123,7 +159,9 @@ std::string CallerInfo::ToString() const
         std::to_string(static_cast<int32_t>(callerAbilityType)) + ",callerExtensionAbilityType:" +
         std::to_string(static_cast<int32_t>(callerExtensionAbilityType)) + ",embedded:" +
         std::to_string(embedded) + ",callerAppProvisionType:" + callerAppProvisionType +
-        ",targetAppProvisionType:" + targetAppProvisionType + "}";
+        ",targetAppProvisionType:" + targetAppProvisionType + ",targetAbilityType:" +
+        std::to_string(static_cast<int32_t>(targetAbilityType)) + ",targetExtensionAbilityType:" +
+        std::to_string(static_cast<int32_t>(targetExtensionAbilityType)) + "}";
     return str;
 }
 } // namespace EcologicalRuleMgrService
