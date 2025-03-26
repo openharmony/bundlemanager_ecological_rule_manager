@@ -53,12 +53,12 @@ int32_t EcologicalRuleMgrServiceProxy::QueryFreeInstallExperience(const Want &wa
         LOG_ERROR("SendRequest error, ret = %{public}d", ret);
         return ERR_FAILED;
     }
-    sptr<ExperienceRule> sptrRule = reply.ReadParcelable<ExperienceRule>();
+    sptr<BmsExperienceRule> sptrRule = reply.ReadParcelable<BmsExperienceRule>();
     if (sptrRule == nullptr) {
         LOG_ERROR("readParcelable sptrRule error");
         return ERR_FAILED;
     }
-    rule = *sptrRule;
+    rule.replaceWant = sptrRule->replaceWant;
     LOG_INFO("QueryFreeInstallExperience end");
     return ERR_OK;
 }
@@ -130,12 +130,13 @@ int32_t EcologicalRuleMgrServiceProxy::QueryStartExperience(const Want &want, co
         LOG_ERROR("SendRequest error, ret = %{public}d", ret);
         return ERR_FAILED;
     }
-    sptr<ExperienceRule> sptrRule = reply.ReadParcelable<ExperienceRule>();
+    sptr<AmsExperienceRule> sptrRule = reply.ReadParcelable<AmsExperienceRule>();
     if (sptrRule == nullptr) {
         LOG_ERROR("ReadParcelable sptrRule error");
         return ERR_FAILED;
     }
-    rule = *sptrRule;
+    rule.resultCode = sptrRule->resultCode;
+    rule.replaceWant = sptrRule->replaceWant;
     LOG_INFO("QueryStartExperience end");
     return ERR_OK;
 }
