@@ -59,13 +59,8 @@ ohos_shared_library("ecologicalrulemgr_service") {
     "c_utils:utils",
     "hilog:libhilog",
     "ipc:ipc_core",
-    "safwk:system_ability_fwk",
-    "samgr:samgr_proxy",
-  ]
-  public_external_deps = [
-    "bundle_framework:appexecfwk_core",
-    "ipc:ipc_core",
     "json:nlohmann_json_static",
+    "safwk:system_ability_fwk",
     "samgr:samgr_proxy",
   ]
   part_name = "ecological_rule_manager"
