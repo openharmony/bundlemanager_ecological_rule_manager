@@ -32,9 +32,6 @@
         "safwk",
         "samgr",
         "access_token"
-      ],
-      "third_party": [
-        "jsoncpp"
       ]
     },
     "build": {
