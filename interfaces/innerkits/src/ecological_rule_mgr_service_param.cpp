@@ -140,13 +140,9 @@ CallerInfo *CallerInfo::Unmarshalling(Parcel &in)
 
 bool CallerInfo::Marshalling(Parcel &parcel) const
 {
-    bool res = parcel.WriteString(packageName) && parcel.WriteInt32(uid) && parcel.WriteInt32(pid) &&
-        parcel.WriteInt32(callerAppType) && parcel.WriteInt32(targetAppType);
-    if (!res) {
-        LOG_ERROR("write CallerInfo failed");
-        return false;
-    }
-    return true;
+    LOG_ERROR("CallerInfo Marshalling is already implemented independently at the upper layer, so ERMS CallerInfo "
+        "Marshalling is not required.");
+    return false;
 }
 
 std::string CallerInfo::ToString() const
