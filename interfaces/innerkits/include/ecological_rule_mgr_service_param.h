@@ -30,6 +30,7 @@ struct ExperienceRule : public Parcelable {
     bool isAllow = true;
     int32_t resultCode = -1;
     sptr<Want> replaceWant = nullptr;
+    bool isBackSkuExempt = true;
     bool Marshalling(Parcel &parcel) const override;
     static ExperienceRule *Unmarshalling(Parcel &parcel);
 };
