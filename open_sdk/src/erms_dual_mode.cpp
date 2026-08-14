@@ -21,14 +21,17 @@ namespace OHOS {
 namespace EcologicalRuleMgrService {
 #define TAG "ERMS_DUAL_MODE"
 
-extern "C" int32_t ErmsGetDeviceModelDistributionPolicy(std::string bundleName, std::string path, std::string distributionType,
-    int32_t &distributionPolicy, std::map<std::string, std::vector<std::string>> &devDistributions)
+extern "C" int32_t ErmsGetDeviceModelDistributionPolicy(std::string bundleName, std::string path,
+    std::string distributionType, int32_t &distributionPolicy,
+    std::map<std::string, std::vector<std::string>> &devDistributions)
 {
-    LOG_INFO("GetDistributionPolicy,bundle=%{public}s, distributionType=%{public}s", bundleName.c_str(), distributionType.c_str());
+    LOG_INFO("GetDistributionPolicy,bundle=%{public}s, distributionType=%{public}s",
+        bundleName.c_str(), distributionType.c_str());
     LOG_DEBUG("GetDistributionPolicy,path=%{public}s", path.c_str());
 
     distributionPolicy = 0;
     devDistributions.clear();
     return 0;
+}
 }
 }
