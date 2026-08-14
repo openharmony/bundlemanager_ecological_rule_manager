@@ -15,7 +15,6 @@ import("../ecologicalrulemgrservice.gni")
 
 config("erms_dual_mode_config") {
   include_dirs = [
-    "include",
     "../utils/include",
   ]
 }
