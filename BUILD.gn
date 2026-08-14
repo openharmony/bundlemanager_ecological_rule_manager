@@ -21,6 +21,7 @@ group("ecological_rule_mgr_packages") {
       "interfaces/innerkits:erms_client",
       "profile:ecologicalrulemgrservice_sa_profiles",
       "services:ecologicalrulemgr_service",
+      "open_sdk:erms_dual_mode_policy",
     ]
   }
 }
