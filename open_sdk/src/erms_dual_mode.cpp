@@ -15,6 +15,7 @@
 
 #include <vector>
 #include <map>
+#include <string>
 #include "ecological_rule_mgr_service_logger.h"
 
 namespace OHOS {
